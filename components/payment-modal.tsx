@@ -67,7 +67,14 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
           <Button
             variant="outline"
             className="w-full border-cyan-500 text-cyan-600 hover:bg-cyan-50"
-            onClick={() => window.open("https://buy.stripe.com/your-payment-link", "_blank")}
+            onClick={() =>
+              window.open(
+                packageType === "core"
+                  ? "https://buy.stripe.com/28E3cv5gS1F8f6k2qybEA00"
+                  : "https://buy.stripe.com/5kQ3cv6kW97A4rGghobEA01",
+                "_blank",
+              )
+            }
           >
             <CreditCard className="mr-2 h-4 w-4" />
             Pay Now with Stripe
@@ -82,6 +89,15 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
           >
             <FileText className="mr-2 h-4 w-4" />
             Request Invoice
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full border-slate-300 text-slate-600 hover:bg-slate-50"
+            onClick={() => window.open("https://buy.stripe.com/8x2eVd38K83w6zO2qybEA02", "_blank")}
+          >
+            <CreditCard className="mr-2 h-4 w-4" />
+            Add Extra Inbox ($2,000/month)
           </Button>
         </div>
 
