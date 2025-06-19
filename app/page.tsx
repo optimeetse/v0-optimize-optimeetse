@@ -50,7 +50,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-slate-50 py-24">
+      <section id="features" className="bg-slate-50 py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How OptiMeet Works</h2>
@@ -120,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* Case Study Section */}
-      <section className="py-24 bg-white">
+      <section id="about" className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Real Results</h2>
@@ -175,7 +175,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-slate-50 py-24">
+      <section id="pricing" className="bg-slate-50 py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
@@ -382,6 +382,46 @@ export default function Home() {
             </Button>
           </div>
           <p className="text-white/80 mt-4 text-sm">No contracts • Setup in days • Results guaranteed</p>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ready to Get Started?</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Book a free demo and see how we can fill your calendar with qualified meetings
+            </p>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-slate-50 p-8 rounded-2xl">
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <PhoneCall className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Call Us</h3>
+                  <p className="text-slate-600">(310) 429-0828</p>
+                </div>
+                <div className="text-center">
+                  <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <ArrowRight className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Book a Demo</h3>
+                  <p className="text-slate-600">Schedule a free consultation</p>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white">
+                  BOOK YOUR FREE DEMO NOW
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
