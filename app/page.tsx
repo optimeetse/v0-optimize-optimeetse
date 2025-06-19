@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { PhoneCall, ArrowRight, Users, Target, Zap } from "lucide-react"
@@ -22,11 +24,20 @@ export default function Home() {
             email campaigns, delivering 3-10+ meetings per month directly to your calendar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white">
+            <Button
+              size="lg"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white"
+              onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+            >
               GET STARTED TODAY - BOOK A DEMO
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-950/50">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-950/50"
+              onClick={() => window.open("tel:+13104290828")}
+            >
               <PhoneCall className="mr-2 h-4 w-4" />
               (310) 429-0828
             </Button>
@@ -236,7 +247,12 @@ export default function Home() {
                   <span className="text-slate-700">CRM & Calendar integration</span>
                 </li>
               </ul>
-              <Button className="w-full bg-slate-900 hover:bg-slate-800">Get Started</Button>
+              <Button
+                className="w-full bg-slate-900 hover:bg-slate-800"
+                onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+              >
+                Get Started
+              </Button>
             </div>
 
             {/* Growth Package */}
@@ -301,7 +317,12 @@ export default function Home() {
                   <span>Custom reporting</span>
                 </li>
               </ul>
-              <Button className="w-full bg-white text-cyan-500 hover:bg-slate-100">Get Started</Button>
+              <Button
+                className="w-full bg-white text-cyan-500 hover:bg-slate-100"
+                onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+              >
+                Get Started
+              </Button>
             </div>
           </div>
 
@@ -373,10 +394,19 @@ export default function Home() {
             closing deals.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" className="bg-white text-cyan-600 hover:bg-slate-100">
+            <Button
+              size="lg"
+              className="bg-white text-cyan-600 hover:bg-slate-100"
+              onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+            >
               BOOK A FREE DEMO TODAY
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-cyan-700">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-cyan-700"
+              onClick={() => window.open("tel:+13104290828")}
+            >
               <PhoneCall className="mr-2 h-4 w-4" />
               (310) 429-0828
             </Button>
@@ -415,7 +445,11 @@ export default function Home() {
               </div>
 
               <div className="text-center">
-                <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white">
+                <Button
+                  size="lg"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white"
+                  onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+                >
                   BOOK YOUR FREE DEMO NOW
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

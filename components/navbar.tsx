@@ -35,11 +35,20 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" size="sm" className="text-slate-300 hover:text-white">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-slate-300 hover:text-white"
+            onClick={() => window.open("tel:+13104290828")}
+          >
             <PhoneCall className="mr-2 h-4 w-4" />
             (310) 429-0828
           </Button>
-          <Button size="sm" className="bg-cyan-500 hover:bg-cyan-600 text-white">
+          <Button
+            size="sm"
+            className="bg-cyan-500 hover:bg-cyan-600 text-white"
+            onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+          >
             Get Started
           </Button>
         </div>
@@ -86,11 +95,20 @@ export default function Navbar() {
               Contact
             </Link>
             <div className="pt-4 border-t border-slate-800 flex flex-col space-y-3">
-              <Button variant="outline" size="sm" className="justify-center border-slate-700">
+              <Button
+                variant="outline"
+                size="sm"
+                className="justify-center border-slate-700"
+                onClick={() => window.open("tel:+13104290828")}
+              >
                 <PhoneCall className="mr-2 h-4 w-4" />
                 (310) 429-0828
               </Button>
-              <Button size="sm" className="justify-center bg-cyan-500 hover:bg-cyan-600">
+              <Button
+                size="sm"
+                className="justify-center bg-cyan-500 hover:bg-cyan-600"
+                onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+              >
                 Get Started
               </Button>
             </div>
