@@ -3,18 +3,18 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { PhoneCall, ArrowRight, Users, Target, Zap } from "lucide-react"
+import { PhoneCall, ArrowRight, Users, Target, Zap, Settings, Rocket } from "lucide-react"
 import FAQSection from "@/components/faq-section"
 import PaymentModal from "@/components/payment-modal"
 import ContactForm from "@/components/contact-form"
 
 export default function Home() {
-  const [paymentModal, setPaymentModal] = useState<{ isOpen: boolean; packageType: "core" | "growth" }>({
+  const [paymentModal, setPaymentModal] = useState<{ isOpen: boolean; packageType: "diy" | "core" | "growth" }>({
     isOpen: false,
     packageType: "core",
   })
 
-  const openPaymentModal = (packageType: "core" | "growth") => {
+  const openPaymentModal = (packageType: "diy" | "core" | "growth") => {
     setPaymentModal({ isOpen: true, packageType })
   }
 
@@ -82,7 +82,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How OptiMeet Works</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Our proven 3-step process delivers qualified meetings directly to your calendar
+              Choose your level of involvement - from full DIY control to completely managed campaigns
             </p>
           </div>
 
@@ -91,27 +91,27 @@ export default function Home() {
               <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 1
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">We Integrate</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Choose Your Path</h3>
               <p className="text-slate-600">
-                We connect to your LinkedIn and email accounts to run campaigns on your behalf
+                DIY platform access or fully managed campaigns - we support both approaches
               </p>
             </div>
             <div className="text-center">
               <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 2
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">We Outreach</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Launch Campaigns</h3>
               <p className="text-slate-600">
-                Our team runs targeted, strategic campaigns to high-value prospects in your market
+                Run your own sequences or let our team handle everything from targeting to follow-up
               </p>
             </div>
             <div className="text-center">
               <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 3
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">You Get Meetings</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Book Meetings</h3>
               <p className="text-slate-600">
-                Qualified prospects book directly on your calendar - you focus on closing deals
+                Qualified prospects book directly on your calendar while you focus on closing deals
               </p>
             </div>
           </div>
@@ -131,15 +131,15 @@ export default function Home() {
                 <div className="bg-cyan-50 p-4 rounded-lg mb-4">
                   <Target className="h-8 w-8 text-cyan-600 mx-auto" />
                 </div>
-                <h4 className="font-semibold text-slate-900 mb-2">Pipeline Struggles</h4>
-                <p className="text-slate-600 text-sm">Companies struggling with prospecting or pipeline consistency</p>
+                <h4 className="font-semibold text-slate-900 mb-2">Sales Teams & Agencies</h4>
+                <p className="text-slate-600 text-sm">Teams that want platform access without managed services</p>
               </div>
               <div className="text-center">
                 <div className="bg-cyan-50 p-4 rounded-lg mb-4">
                   <Zap className="h-8 w-8 text-cyan-600 mx-auto" />
                 </div>
-                <h4 className="font-semibold text-slate-900 mb-2">No Sales Team</h4>
-                <p className="text-slate-600 text-sm">Teams that want meetings without hiring a sales rep</p>
+                <h4 className="font-semibold text-slate-900 mb-2">Growing Companies</h4>
+                <p className="text-slate-600 text-sm">Businesses ready to scale their outbound efforts</p>
               </div>
             </div>
           </div>
@@ -205,21 +205,102 @@ export default function Home() {
       <section id="pricing" className="bg-slate-50 py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Choose Your Approach</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Choose the package that fits your business needs. No contracts, no hidden fees.
+              From DIY platform access to fully managed campaigns. No contracts, no hidden fees.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* DIY Package */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                New!
+              </div>
+              <div className="text-center mb-8">
+                <div className="bg-orange-50 p-3 rounded-lg mb-4 mx-auto w-fit">
+                  <Settings className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">DIY Engine</h3>
+                <div className="text-4xl font-bold text-slate-900 mb-2">
+                  $149<span className="text-lg text-slate-600">/user/month</span>
+                </div>
+                <p className="text-slate-600">Full platform access - you run it</p>
+                <p className="text-sm text-orange-600 font-medium mt-2">No onboarding, no managed services</p>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <div className="bg-orange-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">Complete platform access</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-orange-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">Unlimited email sequences</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-orange-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">LinkedIn automation tools</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-orange-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">CRM integrations</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-orange-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">Analytics & reporting</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-orange-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">Email support</span>
+                </li>
+              </ul>
+              <Button
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white mb-4"
+                onClick={() => openPaymentModal("diy")}
+              >
+                Start DIY Engine
+              </Button>
+              <p className="text-xs text-slate-500 text-center">
+                Volume pricing: 3+ users get 10% off, 6+ users get 20% off
+              </p>
+            </div>
+
             {/* Core Package */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
               <div className="text-center mb-8">
+                <div className="bg-cyan-50 p-3 rounded-lg mb-4 mx-auto w-fit">
+                  <Rocket className="h-8 w-8 text-cyan-600" />
+                </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Core</h3>
                 <div className="text-4xl font-bold text-slate-900 mb-2">
                   $5,000<span className="text-lg text-slate-600">/month</span>
                 </div>
                 <p className="text-slate-600">Perfect for getting started</p>
+                <p className="text-sm text-cyan-600 font-medium mt-2">Fully managed campaigns</p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -260,7 +341,15 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-slate-700">CRM & Calendar integration</span>
+                  <span className="text-slate-700">Full onboarding & setup</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-cyan-500 rounded-full p-1 mr-3 mt-1">
+                    <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-slate-700">Dedicated account manager</span>
                 </li>
               </ul>
               <Button
@@ -277,11 +366,15 @@ export default function Home() {
                 Most Popular
               </div>
               <div className="text-center mb-8">
+                <div className="bg-white/20 p-3 rounded-lg mb-4 mx-auto w-fit">
+                  <Users className="h-8 w-8 text-white" />
+                </div>
                 <h3 className="text-2xl font-bold mb-2">Growth</h3>
                 <div className="text-4xl font-bold mb-2">
                   $8,500<span className="text-lg opacity-80">/month</span>
                 </div>
                 <p className="opacity-90">For scaling businesses</p>
+                <p className="text-sm font-medium mt-2 text-cyan-100">Premium managed service</p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -330,7 +423,7 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span>Custom reporting</span>
+                  <span>Priority support & optimization</span>
                 </li>
               </ul>
               <Button
@@ -342,10 +435,48 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center mt-8">
-            <p className="text-slate-600">
-              Need additional inboxes? <span className="font-semibold">$2,000/month</span> per extra inbox
-            </p>
+          <div className="text-center mt-12">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Which Option Is Right for You?</h3>
+              <div className="grid md:grid-cols-3 gap-6 text-sm">
+                <div className="text-center">
+                  <div className="bg-orange-50 p-3 rounded-lg mb-3">
+                    <Settings className="h-6 w-6 text-orange-600 mx-auto" />
+                  </div>
+                  <h4 className="font-semibold text-slate-900 mb-2">Choose DIY Engine if:</h4>
+                  <ul className="text-slate-600 space-y-1">
+                    <li>• You have outbound experience</li>
+                    <li>• You want full control</li>
+                    <li>• You have a team to manage campaigns</li>
+                    <li>• You need multiple user access</li>
+                  </ul>
+                </div>
+                <div className="text-center">
+                  <div className="bg-cyan-50 p-3 rounded-lg mb-3">
+                    <Rocket className="h-6 w-6 text-cyan-600 mx-auto" />
+                  </div>
+                  <h4 className="font-semibold text-slate-900 mb-2">Choose Core if:</h4>
+                  <ul className="text-slate-600 space-y-1">
+                    <li>• You want us to handle everything</li>
+                    <li>• You're new to outbound</li>
+                    <li>• You prefer guaranteed results</li>
+                    <li>• You want strategic guidance</li>
+                  </ul>
+                </div>
+                <div className="text-center">
+                  <div className="bg-cyan-50 p-3 rounded-lg mb-3">
+                    <Users className="h-6 w-6 text-cyan-600 mx-auto" />
+                  </div>
+                  <h4 className="font-semibold text-slate-900 mb-2">Choose Growth if:</h4>
+                  <ul className="text-slate-600 space-y-1">
+                    <li>• You need higher volume</li>
+                    <li>• You have multiple team members</li>
+                    <li>• You want premium support</li>
+                    <li>• You're scaling rapidly</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -354,9 +485,9 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">OptiMeet vs. Hiring a Sales Rep</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">DIY vs Managed vs Hiring In-House</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              See why OptiMeet is the smarter choice for growing businesses
+              Compare all your options for scaling outbound sales
             </p>
           </div>
 
@@ -365,35 +496,41 @@ export default function Home() {
               <thead>
                 <tr className="bg-slate-50">
                   <th className="text-left p-6 font-semibold text-slate-900">Feature</th>
-                  <th className="text-center p-6 font-semibold text-cyan-600">OptiMeet Sales Engine</th>
+                  <th className="text-center p-6 font-semibold text-orange-600">DIY Engine</th>
+                  <th className="text-center p-6 font-semibold text-cyan-600">Managed Service</th>
                   <th className="text-center p-6 font-semibold text-slate-600">In-House Sales Rep</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-6 font-medium text-slate-900">Cost</td>
-                  <td className="p-6 text-center text-cyan-600">Fixed, low monthly fee</td>
-                  <td className="p-6 text-center text-slate-600">$80K+ annual salary + commission</td>
+                  <td className="p-6 font-medium text-slate-900">Monthly Cost</td>
+                  <td className="p-6 text-center text-orange-600">$149/user</td>
+                  <td className="p-6 text-center text-cyan-600">$5,000-$8,500</td>
+                  <td className="p-6 text-center text-slate-600">$6,000+ salary + benefits</td>
                 </tr>
                 <tr className="border-t border-slate-100 bg-slate-50/50">
-                  <td className="p-6 font-medium text-slate-900">Speed</td>
-                  <td className="p-6 text-center text-cyan-600">Up & running in days</td>
-                  <td className="p-6 text-center text-slate-600">3-6 months to hire, train, ramp up</td>
+                  <td className="p-6 font-medium text-slate-900">Setup Time</td>
+                  <td className="p-6 text-center text-orange-600">Immediate access</td>
+                  <td className="p-6 text-center text-cyan-600">3-5 days</td>
+                  <td className="p-6 text-center text-slate-600">3-6 months</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-6 font-medium text-slate-900">Expertise</td>
-                  <td className="p-6 text-center text-cyan-600">Proven outreach strategies</td>
-                  <td className="p-6 text-center text-slate-600">Requires training & management</td>
+                  <td className="p-6 font-medium text-slate-900">Control Level</td>
+                  <td className="p-6 text-center text-orange-600">Full control</td>
+                  <td className="p-6 text-center text-cyan-600">Strategic input</td>
+                  <td className="p-6 text-center text-slate-600">Full control</td>
                 </tr>
                 <tr className="border-t border-slate-100 bg-slate-50/50">
-                  <td className="p-6 font-medium text-slate-900">Lead Generation</td>
-                  <td className="p-6 text-center text-cyan-600">Data-driven targeting</td>
-                  <td className="p-6 text-center text-slate-600">Manual, inconsistent prospecting</td>
+                  <td className="p-6 font-medium text-slate-900">Expertise Required</td>
+                  <td className="p-6 text-center text-orange-600">High</td>
+                  <td className="p-6 text-center text-cyan-600">None</td>
+                  <td className="p-6 text-center text-slate-600">Training required</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-6 font-medium text-slate-900">Scalability</td>
-                  <td className="p-6 text-center text-cyan-600">Plug-and-play for immediate impact</td>
-                  <td className="p-6 text-center text-slate-600">Limited by individual bandwidth</td>
+                  <td className="p-6 text-center text-orange-600">High (add users)</td>
+                  <td className="p-6 text-center text-cyan-600">Medium (add packages)</td>
+                  <td className="p-6 text-center text-slate-600">Low (hire more people)</td>
                 </tr>
               </tbody>
             </table>
@@ -406,8 +543,7 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Book More Meetings?</h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Stop wasting time on prospecting. Let us fill your calendar with qualified meetings while you focus on
-            closing deals.
+            Whether you want full control or complete management, we have the perfect solution for your business.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
@@ -464,12 +600,12 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    AI Sales Predictions
+                    DIY Platform Access
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Lead Scoring
+                    Managed Campaigns
                   </Link>
                 </li>
                 <li>

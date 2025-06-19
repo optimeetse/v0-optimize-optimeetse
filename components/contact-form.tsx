@@ -144,6 +144,7 @@ export default function ContactForm() {
               <SelectValue placeholder="Select a package" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="diy">DIY Engine ($149/user/month)</SelectItem>
               <SelectItem value="core">Core Package ($5,000/month)</SelectItem>
               <SelectItem value="growth">Growth Package ($8,500/month)</SelectItem>
               <SelectItem value="custom">Custom Solution</SelectItem>
