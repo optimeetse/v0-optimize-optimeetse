@@ -47,7 +47,7 @@ export default function Navbar() {
           <Button
             size="sm"
             className="bg-cyan-500 hover:bg-cyan-600 text-white"
-            onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+            onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
           >
             Get Started
           </Button>
@@ -107,7 +107,7 @@ export default function Navbar() {
               <Button
                 size="sm"
                 className="justify-center bg-cyan-500 hover:bg-cyan-600"
-                onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+                onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
               >
                 Get Started
               </Button>

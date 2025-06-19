@@ -1,11 +1,26 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { PhoneCall, ArrowRight, Users, Target, Zap } from "lucide-react"
 import FAQSection from "@/components/faq-section"
+import PaymentModal from "@/components/payment-modal"
 
 export default function Home() {
+  const [paymentModal, setPaymentModal] = useState<{ isOpen: boolean; packageType: "core" | "growth" }>({
+    isOpen: false,
+    packageType: "core",
+  })
+
+  const openPaymentModal = (packageType: "core" | "growth") => {
+    setPaymentModal({ isOpen: true, packageType })
+  }
+
+  const closePaymentModal = () => {
+    setPaymentModal({ isOpen: false, packageType: "core" })
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
@@ -27,7 +42,7 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-cyan-500 hover:bg-cyan-600 text-white"
-              onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+              onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
             >
               GET STARTED TODAY - BOOK A DEMO
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -248,8 +263,8 @@ export default function Home() {
                 </li>
               </ul>
               <Button
-                className="w-full bg-slate-900 hover:bg-slate-800"
-                onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+                onClick={() => openPaymentModal("core")}
               >
                 Get Started
               </Button>
@@ -319,7 +334,7 @@ export default function Home() {
               </ul>
               <Button
                 className="w-full bg-white text-cyan-500 hover:bg-slate-100"
-                onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+                onClick={() => openPaymentModal("growth")}
               >
                 Get Started
               </Button>
@@ -397,7 +412,7 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-white text-cyan-600 hover:bg-slate-100"
-              onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+              onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
             >
               BOOK A FREE DEMO TODAY
             </Button>
@@ -448,7 +463,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   className="bg-cyan-500 hover:bg-cyan-600 text-white"
-                  onClick={() => window.open("https://calendly.com/your-calendly-link", "_blank")}
+                  onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
                 >
                   BOOK YOUR FREE DEMO NOW
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -536,6 +551,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Payment Modal */}
+      <PaymentModal isOpen={paymentModal.isOpen} onClose={closePaymentModal} packageType={paymentModal.packageType} />
     </div>
   )
 }
