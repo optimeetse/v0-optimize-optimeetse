@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { PhoneCall, ArrowRight, Users, Target, Zap } from "lucide-react"
 import FAQSection from "@/components/faq-section"
 import PaymentModal from "@/components/payment-modal"
+import ContactForm from "@/components/contact-form"
 
 export default function Home() {
   const [paymentModal, setPaymentModal] = useState<{ isOpen: boolean; packageType: "core" | "growth" }>({
@@ -436,40 +437,12 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ready to Get Started?</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Book a free demo and see how we can fill your calendar with qualified meetings
+              Fill out the form below and we'll be in touch within 24 hours to discuss your needs
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <div className="bg-slate-50 p-8 rounded-2xl">
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                <div className="text-center">
-                  <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <PhoneCall className="h-8 w-8" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-2">Call Us</h3>
-                  <p className="text-slate-600">(310) 429-0828</p>
-                </div>
-                <div className="text-center">
-                  <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <ArrowRight className="h-8 w-8" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-2">Book a Demo</h3>
-                  <p className="text-slate-600">Schedule a free consultation</p>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <Button
-                  size="lg"
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white"
-                  onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
-                >
-                  BOOK YOUR FREE DEMO NOW
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
