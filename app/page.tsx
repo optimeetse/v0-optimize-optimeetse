@@ -513,7 +513,7 @@ export default function Home() {
               <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
               <p className="mb-2">Los Angeles, CA</p>
               <p className="mb-2">(310) 429-0828</p>
-              <p className="mb-4">info@optimeetse.com</p>
+              <p className="mb-4">info@covermygenetics.com</p>
               <Button variant="outline" size="sm" className="border-slate-700 hover:border-slate-600">
                 Contact Sales
               </Button>

@@ -14,8 +14,8 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to you
     const notificationEmail = await resend.emails.send({
-      from: "OptiMeet Contact Form <noreply@optimeetse.com>",
-      to: ["info@optimeetse.com"],
+      from: "OptiMeet Contact Form <noreply@covermygenetics.com>",
+      to: ["info@covermygenetics.com"],
       subject: `🚀 New Lead: ${name} from ${company}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to the prospect
     const confirmationEmail = await resend.emails.send({
-      from: "Aric from OptiMeet <aric@optimeetse.com>",
+      from: "Aric from OptiMeet <aric@covermygenetics.com>",
       to: [email],
       subject: "Thanks for your interest in OptiMeet Sales Engine!",
       html: `
