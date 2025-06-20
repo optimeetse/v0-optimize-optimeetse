@@ -27,7 +27,7 @@ export default function ContactForm() {
     setSubmitStatus(null)
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(process.env.NEXT_PUBLIC_WEBHOOK_URL as string, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default function ContactForm() {
 
       const result = await response.json()
 
-      if (result.success) {
+      if (response.ok) {
         // Track conversion event
         if (typeof window !== "undefined" && (window as any).gtag) {
           ;(window as any).gtag("event", "form_submit", {
@@ -86,7 +86,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={(e) => handleChange("name", e.target.value)}
               placeholder="John Smith"
-              className="w-full"
+              className="w-full !bg-white !text-black !border-slate-300 !placeholder-gray-500 focus-visible:ring-offset-0"
             />
           </div>
           <div>
@@ -100,14 +100,17 @@ export default function ContactForm() {
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
               placeholder="john@company.com"
-              className="w-full"
+              className="w-full !bg-white !text-black !border-slate-300 !placeholder-gray-500 focus-visible:ring-offset-0"
             />
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">
+            <label
+              htmlFor="company"
+              className="block text-sm font-medium text-slate-700 mb-2"
+            >
               Company Name *
             </label>
             <Input
@@ -117,11 +120,14 @@ export default function ContactForm() {
               value={formData.company}
               onChange={(e) => handleChange("company", e.target.value)}
               placeholder="Acme Corp"
-              className="w-full"
+              className="w-full !bg-white !text-black !border-slate-300 !placeholder-gray-500 focus-visible:ring-offset-0"
             />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-slate-700 mb-2"
+            >
               Phone Number
             </label>
             <Input
@@ -130,23 +136,31 @@ export default function ContactForm() {
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
               placeholder="(555) 123-4567"
-              className="w-full"
+              className="w-full !bg-white !text-black !border-slate-300 !placeholder-gray-500 focus-visible:ring-offset-0"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="package" className="block text-sm font-medium text-slate-700 mb-2">
+          <label
+            htmlFor="package"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
             Interested Package
           </label>
-          <Select value={formData.package} onValueChange={(value) => handleChange("package", value)}>
-            <SelectTrigger className="w-full">
+          <Select
+            value={formData.package}
+            onValueChange={(value) => handleChange("package", value)}
+          >
+            <SelectTrigger className="!bg-white !text-black !placeholder-gray-500 !border-slate-300 focus:ring-offset-0 focus-visible:ring-offset-0">
               <SelectValue placeholder="Select a package" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="diy">DIY Engine ($149/user/month)</SelectItem>
               <SelectItem value="core">Core Package ($5,000/month)</SelectItem>
-              <SelectItem value="growth">Growth Package ($8,500/month)</SelectItem>
+              <SelectItem value="growth">
+                Growth Package ($8,500/month)
+              </SelectItem>
               <SelectItem value="custom">Custom Solution</SelectItem>
               <SelectItem value="not-sure">Not Sure Yet</SelectItem>
             </SelectContent>
@@ -154,7 +168,10 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
             Tell us about your business
           </label>
           <Textarea
@@ -163,7 +180,7 @@ export default function ContactForm() {
             value={formData.message}
             onChange={(e) => handleChange("message", e.target.value)}
             placeholder="What's your current revenue? What challenges are you facing with lead generation? Any specific goals?"
-            className="w-full"
+            className="w-full !bg-white !border-slate-300 !placeholder-gray-500 !text-black focus-visible:ring-offset-0"
           />
         </div>
 
@@ -179,21 +196,32 @@ export default function ContactForm() {
           </div>
         )}
 
-        <Button type="submit" disabled={isSubmitting} className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3">
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3"
+        >
           {isSubmitting ? "Sending..." : "Send Message & Get Started"}
         </Button>
       </form>
 
       <div className="mt-6 pt-6 border-t border-slate-200 text-center">
-        <p className="text-sm text-slate-500 mb-3">Prefer to talk directly? Call us now:</p>
+        <p className="text-sm text-slate-500 mb-3">
+          Prefer to talk directly? Call us now:
+        </p>
         <Button
           variant="outline"
           onClick={() => window.open("tel:+13104290828")}
-          className="border-cyan-500 text-cyan-600 hover:bg-cyan-50"
+          className="
+            border-cyan-500 text-black bg-white    
+            hover:bg-cyan-500 hover:text-white     
+            hover:scale-105 transform              
+            transition-all duration-200 ease-in-out
+          "
         >
           📞 (310) 429-0828
         </Button>
       </div>
     </div>
-  )
+  );
 }
