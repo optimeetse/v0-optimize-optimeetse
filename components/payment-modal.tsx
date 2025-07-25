@@ -158,7 +158,7 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
             variant="outline"
             className="w-full bg-transparent"
             onClick={() =>
-              window.open("mailto:info@covermygenetics.com?subject=Invoice Request - " + currentPackage.name, "_blank")
+              window.open("mailto:info@optimeetse.com?subject=Invoice Request - " + currentPackage.name, "_blank")
             }
           >
             <FileText className="mr-2 h-4 w-4" />
