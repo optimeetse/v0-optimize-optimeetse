@@ -2,14 +2,12 @@
 
 import type React from "react"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function ContactForm() {
-  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,36 +24,43 @@ export default function ContactForm() {
     setIsSubmitting(true)
     setSubmitStatus(null)
 
+    // Simulate form submission without API call for now
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_WEBHOOK_URL as string, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      // Track conversion event
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        ;(window as any).gtag("event", "form_submit", {
+          event_category: "engagement",
+          event_label: "contact_form",
+          value: 1,
+        })
+      }
+
+      // Simulate processing time
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // Log form data to console for now
+      console.log("Form submission:", formData)
+
+      setSubmitStatus({
+        type: "success",
+        message:
+          "Thank you for your interest! We'll get back to you within 24 hours. For immediate assistance, please call (310) 429-0828.",
       })
 
-      const result = await response.json()
-
-      if (response.ok) {
-        // Track conversion event
-        if (typeof window !== "undefined" && (window as any).gtag) {
-          ;(window as any).gtag("event", "form_submit", {
-            event_category: "engagement",
-            event_label: "contact_form",
-            value: 1,
-          })
-        }
-
-        // Redirect to thank you page
-        router.push("/thank-you")
-      } else {
-        setSubmitStatus({ type: "error", message: result.message })
-      }
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        package: "",
+        message: "",
+      })
     } catch (error) {
+      console.error("Form submission error:", error)
       setSubmitStatus({
         type: "error",
-        message: "Something went wrong. Please try again or call us at (310) 429-0828.",
+        message: "Something went wrong. Please call us directly at (310) 429-0828.",
       })
     } finally {
       setIsSubmitting(false)
@@ -70,7 +75,8 @@ export default function ContactForm() {
     <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
       <h3 className="text-2xl font-bold text-slate-900 mb-6">Get Started Today</h3>
       <p className="text-slate-600 mb-8">
-        Fill out the form below and we'll be in touch within 24 hours to discuss your needs.
+        Fill out the form below and we'll be in touch within 24 hours to discuss your needs and recommend the best
+        package for your business.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -107,10 +113,7 @@ export default function ContactForm() {
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label
-              htmlFor="company"
-              className="block text-sm font-medium text-slate-700 mb-2"
-            >
+            <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">
               Company Name *
             </label>
             <Input
@@ -124,10 +127,7 @@ export default function ContactForm() {
             />
           </div>
           <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-slate-700 mb-2"
-            >
+            <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
               Phone Number
             </label>
             <Input
@@ -142,36 +142,25 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label
-            htmlFor="package"
-            className="block text-sm font-medium text-slate-700 mb-2"
-          >
-            Interested Package
+          <label htmlFor="package" className="block text-sm font-medium text-slate-700 mb-2">
+            Interested Solution
           </label>
-          <Select
-            value={formData.package}
-            onValueChange={(value) => handleChange("package", value)}
-          >
+          <Select value={formData.package} onValueChange={(value) => handleChange("package", value)}>
             <SelectTrigger className="!bg-white !text-black !placeholder-gray-500 !border-slate-300 focus:ring-offset-0 focus-visible:ring-offset-0">
-              <SelectValue placeholder="Select a package" />
+              <SelectValue placeholder="Select your preferred solution" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="diy">DIY Engine ($149/user/month)</SelectItem>
-              <SelectItem value="core">Core Package ($5,000/month)</SelectItem>
-              <SelectItem value="growth">
-                Growth Package ($8,500/month)
-              </SelectItem>
+              <SelectItem value="starter">Starter Package ($2,500/month)</SelectItem>
+              <SelectItem value="growth">Growth Package ($5,000/month)</SelectItem>
+              <SelectItem value="scale">Scale Package ($10,000/month)</SelectItem>
               <SelectItem value="custom">Custom Solution</SelectItem>
-              <SelectItem value="not-sure">Not Sure Yet</SelectItem>
+              <SelectItem value="not-sure">Not Sure Yet - Need Guidance</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
-          <label
-            htmlFor="message"
-            className="block text-sm font-medium text-slate-700 mb-2"
-          >
+          <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
             Tell us about your business
           </label>
           <Textarea
@@ -179,7 +168,7 @@ export default function ContactForm() {
             rows={4}
             value={formData.message}
             onChange={(e) => handleChange("message", e.target.value)}
-            placeholder="What's your current revenue? What challenges are you facing with lead generation? Any specific goals?"
+            placeholder="What's your current revenue? What challenges are you facing with lead generation? Any specific goals for meetings per month?"
             className="w-full !bg-white !border-slate-300 !placeholder-gray-500 !text-black focus-visible:ring-offset-0"
           />
         </div>
@@ -196,19 +185,13 @@ export default function ContactForm() {
           </div>
         )}
 
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3"
-        >
+        <Button type="submit" disabled={isSubmitting} className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3">
           {isSubmitting ? "Sending..." : "Send Message & Get Started"}
         </Button>
       </form>
 
       <div className="mt-6 pt-6 border-t border-slate-200 text-center">
-        <p className="text-sm text-slate-500 mb-3">
-          Prefer to talk directly? Call us now:
-        </p>
+        <p className="text-sm text-slate-500 mb-3">Prefer to talk directly? Call us now:</p>
         <Button
           variant="outline"
           onClick={() => window.open("tel:+13104290828")}
@@ -223,5 +206,5 @@ export default function ContactForm() {
         </Button>
       </div>
     </div>
-  );
+  )
 }

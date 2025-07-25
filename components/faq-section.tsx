@@ -5,34 +5,34 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 
 const faqs = [
   {
-    question: "How do you ensure high-quality meetings?",
+    question: "What exactly do you deliver?",
     answer:
-      "We use data-driven targeting and pre-qualify prospects before booking meetings. Our team researches each prospect to ensure they match your ideal customer profile and have genuine interest in your solution.",
+      "We run systematic cold email campaigns and deliver hot leads to you. These are prospects who have responded positively to our outreach and are interested in learning more. You'll need to follow up with calls to convert them into meetings and sales.",
   },
   {
-    question: "Will this interfere with my current email deliverability?",
+    question: "Do I still need to make cold calls?",
     answer:
-      "No. We use optimized sending strategies to maintain high deliverability and avoid spam filters. Our approach protects your domain reputation while maximizing outreach effectiveness.",
+      "Yes. We generate interested prospects through cold email, but you'll still need to call these hot leads to book meetings and close deals. Think of us as your lead generation engine that feeds your sales team.",
   },
   {
-    question: "Can I customize my outreach?",
+    question: "How do you ensure high email deliverability?",
     answer:
-      "Yes. We align messaging with your brand and goals while maintaining efficiency. You'll review and approve all scripts before we launch campaigns, ensuring they sound authentic to your voice.",
+      "We use advanced email warming, domain rotation, and deliverability optimization to maintain 99%+ inbox delivery rates. Our infrastructure is designed to avoid spam filters and protect your sender reputation.",
   },
   {
-    question: "What do I need to get started?",
+    question: "What's included in lead generation?",
     answer:
-      "You'll need LinkedIn Sales Navigator access, email credentials, your Calendly link, target customer details, and approval of our suggested messaging scripts. We handle the rest.",
+      "For Growth and Scale packages, we research and identify your ideal prospects using advanced targeting criteria. We build custom prospect lists based on your ideal customer profile, so you don't have to worry about finding leads.",
   },
   {
     question: "How quickly can we get started?",
     answer:
-      "Most clients are up and running within 3-5 business days after providing the necessary access and approvals. We handle all the technical setup and integration work.",
+      "Most clients are up and running within 3-5 business days after providing the necessary access and approvals. We handle all the technical setup, email warming, and campaign creation.",
   },
   {
-    question: "What if I'm not satisfied with the results?",
+    question: "What if the leads don't convert?",
     answer:
-      "We work closely with you to optimize campaigns for better results. Our team continuously A/B tests messaging and targeting to improve performance throughout our partnership.",
+      "Lead conversion depends on your follow-up and sales process. We focus on generating interested prospects through our email campaigns. We'll work with you to optimize messaging and targeting to improve lead quality over time.",
   },
 ]
 
