@@ -3,7 +3,20 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { PhoneCall, ArrowRight, Users, Target, Zap, Rocket, Shield, TrendingUp, CheckCircle } from "lucide-react"
+import {
+  PhoneCall,
+  ArrowRight,
+  Users,
+  Target,
+  Rocket,
+  Shield,
+  TrendingUp,
+  CheckCircle,
+  Microscope,
+  Building2,
+  FlaskConical,
+  BookOpen,
+} from "lucide-react"
 import FAQSection from "@/components/faq-section"
 import PaymentModal from "@/components/payment-modal"
 import ContactForm from "@/components/contact-form"
@@ -35,12 +48,16 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <div className="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm font-medium w-fit mb-6">
+            Life Sciences Specialists
+          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
-            We Generate <span className="text-cyan-400">Hot Leads</span> Through Cold Email So You Can Focus on Closing
+            Get Meetings with <span className="text-cyan-400">Pharma & Biotech</span> Decision Makers
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mb-10">
-            Stop wasting time on manual outreach. We run systematic cold email campaigns that generate interested
-            prospects and hot leads for your sales team to follow up on and close.
+            We specialize in helping life sciences companies book qualified meetings with pharmaceutical and biotech
+            executives. Our industry-focused cold email campaigns generate warm introductions to the decision makers you
+            need to reach.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
@@ -48,7 +65,7 @@ export default function Home() {
               className="bg-cyan-500 hover:bg-cyan-600 text-white"
               onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
             >
-              GET STARTED TODAY - BOOK A DEMO
+              BOOK A PHARMA OUTREACH STRATEGY CALL
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
@@ -64,16 +81,16 @@ export default function Home() {
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl">
             <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">15+</div>
-              <div className="text-slate-300">Hours Saved Per Week</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">25+</div>
+              <div className="text-slate-300">Pharma Meetings/Month</div>
             </div>
             <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">1000+</div>
-              <div className="text-slate-300">Emails Sent Daily</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">500+</div>
+              <div className="text-slate-300">Life Sciences Contacts</div>
             </div>
             <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700/50">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">99%+</div>
-              <div className="text-slate-300">Email Deliverability</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-2">15%</div>
+              <div className="text-slate-300">Response Rate</div>
             </div>
           </div>
         </div>
@@ -83,9 +100,12 @@ export default function Home() {
       <section id="features" className="bg-slate-50 py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How OptiMeet Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              How We Connect You with Pharma & Biotech
+            </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              From campaign setup to hot leads - we handle the outreach so you can focus on closing deals
+              Our specialized approach to life sciences outreach gets you in front of the right pharmaceutical and
+              biotech decision makers
             </p>
           </div>
 
@@ -94,58 +114,63 @@ export default function Home() {
               <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 1
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Find & Target</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Target Pharma Executives</h3>
               <p className="text-slate-600">
-                We identify your ideal prospects using advanced lead generation and AI-powered targeting
+                We identify key decision makers at pharmaceutical and biotech companies using our specialized life
+                sciences database and targeting
               </p>
             </div>
             <div className="text-center">
               <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 2
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Email & Nurture</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Industry-Specific Outreach</h3>
               <p className="text-slate-600">
-                Multi-inbox cold email campaigns with personalized messaging and automated follow-up sequences
+                Compliance-aware cold email campaigns with messaging tailored to pharmaceutical and biotech industry
+                needs and regulations
               </p>
             </div>
             <div className="text-center">
               <div className="bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 3
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Deliver Hot Leads</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Qualified Pharma Meetings</h3>
               <p className="text-slate-600">
-                Interested prospects are delivered to you as hot leads for your team to call and close
+                Interested pharmaceutical and biotech prospects are delivered as warm leads ready for your sales team to
+                convert into meetings
               </p>
             </div>
           </div>
 
           {/* Who We Help */}
           <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Who We Help</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Life Sciences Companies We Serve</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="bg-cyan-50 p-4 rounded-lg mb-4">
-                  <Users className="h-8 w-8 text-cyan-600 mx-auto" />
+                  <Microscope className="h-8 w-8 text-cyan-600 mx-auto" />
                 </div>
-                <h4 className="font-semibold text-slate-900 mb-2">$1M-$10M Businesses</h4>
-                <p className="text-slate-600 text-sm">CEOs and executives who want predictable lead generation</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-cyan-50 p-4 rounded-lg mb-4">
-                  <Target className="h-8 w-8 text-cyan-600 mx-auto" />
-                </div>
-                <h4 className="font-semibold text-slate-900 mb-2">Sales Teams & VPs</h4>
+                <h4 className="font-semibold text-slate-900 mb-2">Biotech Startups</h4>
                 <p className="text-slate-600 text-sm">
-                  Teams that need consistent hot leads without the overhead of manual outreach
+                  Early-stage biotechnology companies seeking pharma partnerships and licensing deals
                 </p>
               </div>
               <div className="text-center">
                 <div className="bg-cyan-50 p-4 rounded-lg mb-4">
-                  <Zap className="h-8 w-8 text-cyan-600 mx-auto" />
+                  <FlaskConical className="h-8 w-8 text-cyan-600 mx-auto" />
                 </div>
-                <h4 className="font-semibold text-slate-900 mb-2">High-Growth Companies</h4>
+                <h4 className="font-semibold text-slate-900 mb-2">Life Sciences Service Providers</h4>
                 <p className="text-slate-600 text-sm">
-                  Businesses ready to scale their outbound lead generation systematically
+                  CROs, CDMOs, and consulting firms targeting pharmaceutical and biotech clients
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="bg-cyan-50 p-4 rounded-lg mb-4">
+                  <Building2 className="h-8 w-8 text-cyan-600 mx-auto" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-2">MedTech Companies</h4>
+                <p className="text-slate-600 text-sm">
+                  Medical device and diagnostic companies seeking pharma collaborations and market access
                 </p>
               </div>
             </div>
@@ -157,9 +182,9 @@ export default function Home() {
       <section id="about" className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Real Results</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Life Sciences Success Story</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              See how we've helped businesses like yours generate more hot leads and scale their outreach
+              See how we helped a biotech company secure meetings with top pharmaceutical partners
             </p>
           </div>
 
@@ -169,40 +194,42 @@ export default function Home() {
                 <div className="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm font-medium w-fit mb-6">
                   Case Study
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-6">B2B SaaS Company</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-6">Biotech Startup → Big Pharma Partnerships</h3>
                 <div className="space-y-4 mb-8">
                   <div>
                     <h4 className="font-semibold text-cyan-400 mb-2">The Challenge:</h4>
                     <p className="text-slate-300">
-                      $5M revenue company struggling with inconsistent outbound results and poor lead quality
+                      Series B biotech company with promising oncology assets needed to connect with pharmaceutical
+                      business development teams for potential partnerships
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-cyan-400 mb-2">Our Solution:</h4>
                     <p className="text-slate-300">
-                      Multi-inbox cold email campaigns with targeted lead generation and AI-powered personalization
+                      Targeted outreach to VP+ level executives at top 20 pharmaceutical companies with personalized
+                      messaging about their therapeutic focus areas
                     </p>
                   </div>
                 </div>
               </div>
               <div className="bg-slate-800/50 p-8 rounded-xl">
-                <h4 className="text-xl font-bold mb-6 text-center">Campaign Performance</h4>
+                <h4 className="text-xl font-bold mb-6 text-center">Campaign Results</h4>
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Daily Email Volume:</span>
-                    <span className="text-2xl font-bold text-cyan-400">2,500+</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Email Deliverability:</span>
-                    <span className="text-2xl font-bold text-cyan-400">99.2%</span>
+                    <span className="text-slate-300">Pharma Companies Reached:</span>
+                    <span className="text-2xl font-bold text-cyan-400">150+</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-300">Response Rate:</span>
-                    <span className="text-2xl font-bold text-cyan-400">12%</span>
+                    <span className="text-2xl font-bold text-cyan-400">18%</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Hot Leads Generated:</span>
-                    <span className="text-2xl font-bold text-cyan-400">150+/mo</span>
+                    <span className="text-slate-300">Qualified Meetings:</span>
+                    <span className="text-2xl font-bold text-cyan-400">12</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-300">Partnership Discussions:</span>
+                    <span className="text-2xl font-bold text-cyan-400">3</span>
                   </div>
                 </div>
               </div>
@@ -211,14 +238,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-slate-50 py-24">
+      {/* Blog Preview Section */}
+      <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">SDR & AI Weekly</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Stay updated with the latest insights on sales development, AI, and life sciences outreach strategies
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Link href="/blog/ai-revolutionizing-pharma-outreach-2024">
+              <article className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+                <img
+                  src="/ai-pharmaceutical-outreach.jpg"
+                  alt="AI in Pharma Outreach"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className="text-sm text-cyan-600 font-medium mb-2">AI & Technology</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    How AI is Revolutionizing Pharmaceutical Outreach in 2024
+                  </h3>
+                  <p className="text-slate-600 text-sm">
+                    Discover how artificial intelligence is transforming the way life sciences companies connect with
+                    pharmaceutical decision makers...
+                  </p>
+                </div>
+              </article>
+            </Link>
+
+            <Link href="/blog/sdr-strategies-biotech-partnerships">
+              <article className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+                <img
+                  src="/biotech-partnership-strategy.jpg"
+                  alt="Biotech SDR Strategies"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className="text-sm text-cyan-600 font-medium mb-2">SDR Strategy</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    SDR Strategies That Actually Work for Biotech Partnership Development
+                  </h3>
+                  <p className="text-slate-600 text-sm">
+                    Learn the proven sales development tactics that help biotech companies secure meetings with Big
+                    Pharma business development teams...
+                  </p>
+                </div>
+              </article>
+            </Link>
+
+            <Link href="/blog/cold-email-compliance-pharma-industry">
+              <article className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+                <img src="/pharmaceutical-compliance.jpg" alt="Pharma Compliance" className="w-full h-48 object-cover" />
+                <div className="p-6">
+                  <div className="text-sm text-cyan-600 font-medium mb-2">Compliance</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    Cold Email Compliance: What Life Sciences Companies Need to Know
+                  </h3>
+                  <p className="text-slate-600 text-sm">
+                    Navigate the complex regulatory landscape of pharmaceutical communications while maintaining
+                    effective outreach campaigns...
+                  </p>
+                </div>
+              </article>
+            </Link>
+          </div>
+
+          <div className="text-center">
+            <Link href="/blog">
+              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">
+                <BookOpen className="mr-2 h-4 w-4" />
+                Read All Articles
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="bg-white py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Life Sciences Outreach Packages</h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Choose the plan that fits your business size and growth goals. All plans include full campaign management
-              and dedicated support.
+              Specialized pricing for pharmaceutical and biotech outreach. All packages include industry expertise,
+              compliance awareness, and dedicated life sciences account management.
             </p>
           </div>
 
@@ -229,11 +335,11 @@ export default function Home() {
                 <div className="bg-orange-50 p-4 rounded-lg mb-6 mx-auto w-fit">
                   <Rocket className="h-8 w-8 text-orange-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Starter</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Biotech Starter</h3>
                 <div className="text-4xl font-bold text-slate-900 mb-2">
-                  $2,500<span className="text-lg text-slate-600">/month</span>
+                  $3,500<span className="text-lg text-slate-600">/month</span>
                 </div>
-                <p className="text-slate-600">Perfect for getting started with cold email</p>
+                <p className="text-slate-600">Perfect for early-stage biotech companies</p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -242,29 +348,29 @@ export default function Home() {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-700">500-1,000 emails/day capacity</span>
+                  <span className="text-slate-700">500-1,000 emails/day to pharma targets</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-700">Campaign setup & management</span>
+                  <span className="text-slate-700">Life sciences messaging expertise</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-700">Weekly performance reports</span>
+                  <span className="text-slate-700">Weekly pharma meeting reports</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-700">Dedicated account manager</span>
+                  <span className="text-slate-700">Dedicated life sciences account manager</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-700">Hot lead delivery system</span>
+                  <span className="text-slate-700">Compliance-aware outreach</span>
                 </li>
                 <li className="flex items-start text-slate-400">
                   <div className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0 flex items-center justify-center">
                     <div className="h-3 w-3 border-2 border-slate-300 rounded-full"></div>
                   </div>
-                  <span>Lead generation services</span>
+                  <span>Pharma database & lead generation</span>
                 </li>
               </ul>
               <Button
@@ -284,11 +390,11 @@ export default function Home() {
                 <div className="bg-white/20 p-4 rounded-lg mb-6 mx-auto w-fit">
                   <TrendingUp className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Growth</h3>
+                <h3 className="text-2xl font-bold mb-2">Pharma Growth</h3>
                 <div className="text-4xl font-bold mb-2">
-                  $5,000<span className="text-lg opacity-80">/month</span>
+                  $7,500<span className="text-lg opacity-80">/month</span>
                 </div>
-                <p className="opacity-90">Best value for scaling businesses</p>
+                <p className="opacity-90">Best for scaling life sciences companies</p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -297,27 +403,27 @@ export default function Home() {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span>1,500-2,500 emails/day capacity</span>
+                  <span>1,500-2,500 emails/day to pharma/biotech</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Advanced campaign optimization</span>
+                  <span>Advanced pharma targeting & personalization</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Bi-weekly strategy calls</span>
+                  <span>Bi-weekly strategy calls with life sciences expert</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Priority support</span>
+                  <span>Priority support & optimization</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Hot lead delivery system</span>
+                  <span>Regulatory compliance guidance</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="font-semibold">Lead generation included</span>
+                  <span className="font-semibold">Pharma database & lead generation included</span>
                 </li>
               </ul>
               <Button
@@ -331,17 +437,17 @@ export default function Home() {
             {/* Scale Package */}
             <div className="bg-gradient-to-b from-slate-900 to-slate-800 p-8 rounded-2xl shadow-lg text-white relative border-2 border-yellow-400">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-slate-900 px-4 py-1 rounded-full text-sm font-medium">
-                Maximum Scale
+                Enterprise Scale
               </div>
               <div className="text-center mb-8">
                 <div className="bg-yellow-400/20 p-4 rounded-lg mb-6 mx-auto w-fit">
                   <Shield className="h-8 w-8 text-yellow-400" />
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Scale</h3>
+                <h3 className="text-2xl font-bold mb-2">Enterprise Pharma</h3>
                 <div className="text-4xl font-bold mb-2">
-                  $10,000<span className="text-lg opacity-80">/month</span>
+                  $15,000<span className="text-lg opacity-80">/month</span>
                 </div>
-                <p className="opacity-90">Enterprise-grade outbound machine</p>
+                <p className="opacity-90">Maximum pharma outreach capacity</p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -350,27 +456,27 @@ export default function Home() {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>3,000+ emails/day capacity</span>
+                  <span>3,000+ emails/day to global pharma</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>White-glove campaign management</span>
+                  <span>White-glove life sciences campaign management</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Weekly strategy & optimization</span>
+                  <span>Weekly strategy & pharma market insights</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Dedicated success manager</span>
+                  <span>Dedicated life sciences success manager</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Hot lead delivery system</span>
+                  <span>Global pharma compliance expertise</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="font-semibold">Premium lead generation</span>
+                  <span className="font-semibold">Premium pharma database & intelligence</span>
                 </li>
               </ul>
               <Button
@@ -385,33 +491,36 @@ export default function Home() {
           {/* Value Proposition */}
           <div className="text-center mt-16">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">What's Included in Every Plan</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Life Sciences Expertise Included</h3>
               <div className="grid md:grid-cols-3 gap-8 text-sm">
                 <div className="text-center">
                   <div className="bg-green-50 p-4 rounded-lg mb-4">
                     <Shield className="h-8 w-8 text-green-600 mx-auto" />
                   </div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Enterprise Deliverability</h4>
+                  <h4 className="font-semibold text-slate-900 mb-2">Regulatory Compliance</h4>
                   <p className="text-slate-600">
-                    99%+ inbox delivery with advanced warming, domain rotation, and spam protection
+                    All outreach follows pharmaceutical industry guidelines and compliance requirements for professional
+                    communications
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="bg-blue-50 p-4 rounded-lg mb-4">
                     <Target className="h-8 w-8 text-blue-600 mx-auto" />
                   </div>
-                  <h4 className="font-semibold text-slate-900 mb-2">AI-Powered Personalization</h4>
+                  <h4 className="font-semibold text-slate-900 mb-2">Pharma Database Access</h4>
                   <p className="text-slate-600">
-                    Smart messaging that adapts to each prospect's industry, role, and company for higher response rates
+                    Specialized database of pharmaceutical and biotech decision makers with accurate contact information
+                    and role details
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="bg-purple-50 p-4 rounded-lg mb-4">
                     <Users className="h-8 w-8 text-purple-600 mx-auto" />
                   </div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Dedicated Support</h4>
+                  <h4 className="font-semibold text-slate-900 mb-2">Industry Expertise</h4>
                   <p className="text-slate-600">
-                    Your own account manager who knows your business and optimizes campaigns for maximum results
+                    Your account manager understands life sciences terminology, market dynamics, and
+                    relationship-building best practices
                   </p>
                 </div>
               </div>
@@ -420,82 +529,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Comparison Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Compare Your Options</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              See how OptiMeet compares to building an in-house team or using other solutions
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-xl shadow-sm border border-slate-200">
-              <thead>
-                <tr className="bg-slate-50">
-                  <th className="text-left p-4 font-semibold text-slate-900">Feature</th>
-                  <th className="text-center p-4 font-semibold text-orange-600">Starter</th>
-                  <th className="text-center p-4 font-semibold text-cyan-600">Growth</th>
-                  <th className="text-center p-4 font-semibold text-yellow-600">Scale</th>
-                  <th className="text-center p-4 font-semibold text-slate-600">In-House</th>
-                </tr>
-              </thead>
-              <tbody className="text-sm">
-                <tr className="border-t border-slate-100">
-                  <td className="p-4 font-medium text-slate-900">Monthly Cost</td>
-                  <td className="p-4 text-center text-orange-600">$2,500</td>
-                  <td className="p-4 text-center text-cyan-600">$5,000</td>
-                  <td className="p-4 text-center text-yellow-600">$10,000</td>
-                  <td className="p-4 text-center text-slate-600">$15,000+</td>
-                </tr>
-                <tr className="border-t border-slate-100 bg-slate-50/50">
-                  <td className="p-4 font-medium text-slate-900">Email Inboxes</td>
-                  <td className="p-4 text-center text-orange-600">3-5</td>
-                  <td className="p-4 text-center text-cyan-600">8-12</td>
-                  <td className="p-4 text-center text-yellow-600">20+</td>
-                  <td className="p-4 text-center text-slate-600">1-3</td>
-                </tr>
-                <tr className="border-t border-slate-100">
-                  <td className="p-4 font-medium text-slate-900">Daily Email Volume</td>
-                  <td className="p-4 text-center text-orange-600">500-1,000</td>
-                  <td className="p-4 text-center text-cyan-600">1,500-2,500</td>
-                  <td className="p-4 text-center text-yellow-600">3,000+</td>
-                  <td className="p-4 text-center text-slate-600">100-500</td>
-                </tr>
-                <tr className="border-t border-slate-100 bg-slate-50/50">
-                  <td className="p-4 font-medium text-slate-900">Lead Generation</td>
-                  <td className="p-4 text-center text-orange-600">❌</td>
-                  <td className="p-4 text-center text-cyan-600">✅</td>
-                  <td className="p-4 text-center text-yellow-600">✅ Premium</td>
-                  <td className="p-4 text-center text-slate-600">Manual</td>
-                </tr>
-                <tr className="border-t border-slate-100">
-                  <td className="p-4 font-medium text-slate-900">Setup Time</td>
-                  <td className="p-4 text-center text-orange-600">3-5 days</td>
-                  <td className="p-4 text-center text-cyan-600">3-5 days</td>
-                  <td className="p-4 text-center text-yellow-600">5-7 days</td>
-                  <td className="p-4 text-center text-slate-600">3-6 months</td>
-                </tr>
-                <tr className="border-t border-slate-100 bg-slate-50/50">
-                  <td className="p-4 font-medium text-slate-900">Management</td>
-                  <td className="p-4 text-center text-orange-600">Full Service</td>
-                  <td className="p-4 text-center text-cyan-600">Full Service</td>
-                  <td className="p-4 text-center text-yellow-600">White Glove</td>
-                  <td className="p-4 text-center text-slate-600">DIY</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-cyan-600 to-cyan-500 py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Scale Your Lead Generation?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Connect with Pharma Decision Makers?
+          </h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Stop wasting time on manual outreach. Let us generate hot leads while you focus on closing deals.
+            Stop struggling to reach pharmaceutical and biotech executives. Let our life sciences specialists generate
+            qualified meetings for you.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
@@ -503,7 +545,7 @@ export default function Home() {
               className="bg-white text-cyan-600 hover:bg-slate-100"
               onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
             >
-              BOOK A FREE STRATEGY CALL
+              BOOK A PHARMA OUTREACH STRATEGY CALL
             </Button>
             <Button
               size="lg"
@@ -515,7 +557,7 @@ export default function Home() {
               (310) 429-0828
             </Button>
           </div>
-          <p className="text-white/80 mt-4 text-sm">No contracts • Setup in days • Results guaranteed</p>
+          <p className="text-white/80 mt-4 text-sm">No contracts • Life sciences expertise • Results guaranteed</p>
         </div>
       </section>
 
@@ -525,7 +567,8 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ready to Get Started?</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Fill out the form below and we'll be in touch within 24 hours to discuss your needs
+              Tell us about your life sciences company and pharma outreach goals. We'll create a custom strategy for
+              your needs.
             </p>
           </div>
 
@@ -543,55 +586,58 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Opitmeet</h3>
-              <p className="mb-4">AI-powered cold email campaigns that generate hot leads on autopilot.</p>
+              <h3 className="text-white text-lg font-semibold mb-4">OptiMeet</h3>
+              <p className="mb-4">
+                Specialized cold email campaigns connecting life sciences companies with pharmaceutical and biotech
+                decision makers.
+              </p>
               <div className="flex space-x-4">{/* Social icons would go here */}</div>
             </div>
             <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Solutions</h3>
+              <h3 className="text-white text-lg font-semibold mb-4">Life Sciences Solutions</h3>
               <ul className="space-y-2">
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Cold Email Campaigns
+                    Pharma Outreach Campaigns
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Lead Generation
+                    Biotech Lead Generation
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Hot Lead Delivery
+                    Partnership Meeting Setup
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Campaign Management
+                    Compliance-Aware Messaging
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Company</h3>
+              <h3 className="text-white text-lg font-semibold mb-4">Resources</h3>
               <ul className="space-y-2">
                 <li>
+                  <Link href="/blog" className="hover:text-white transition-colors">
+                    SDR & AI Weekly Blog
+                  </Link>
+                </li>
+                <li>
                   <Link href="#about" className="hover:text-white transition-colors">
-                    About Us
+                    Case Studies
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Careers
+                    Life Sciences Expertise
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#contact" className="hover:text-white transition-colors">
                     Contact
                   </Link>
                 </li>
@@ -608,7 +654,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-12 pt-8 text-center">
-            <p>&copy; {new Date().getFullYear()} Opitmeet Sales Engine. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} OptiMeet Sales Engine. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -29,6 +29,9 @@ export default function Navbar() {
           <Link href="#pricing" className="text-sm text-slate-300 hover:text-white transition-colors">
             Pricing
           </Link>
+          <Link href="/blog" className="text-sm text-slate-300 hover:text-white transition-colors">
+            Blog
+          </Link>
           <Link href="#contact" className="text-sm text-slate-300 hover:text-white transition-colors">
             Contact
           </Link>
@@ -88,6 +91,13 @@ export default function Navbar() {
               Pricing
             </Link>
             <Link
+              href="/blog"
+              className="block py-2 text-slate-300 hover:text-white"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
               href="#contact"
               className="block py-2 text-slate-300 hover:text-white"
               onClick={() => setIsMenuOpen(false)}
@@ -98,7 +108,7 @@ export default function Navbar() {
               <Button
                 variant="outline"
                 size="sm"
-                className="justify-center border-slate-700"
+                className="justify-center border-slate-700 bg-transparent"
                 onClick={() => window.open("tel:+13104290828")}
               >
                 <PhoneCall className="mr-2 h-4 w-4" />

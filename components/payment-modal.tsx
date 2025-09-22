@@ -13,50 +13,50 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
 
   const packageDetails = {
     starter: {
-      name: "Starter Package",
-      price: "$2,500",
+      name: "Biotech Starter Package",
+      price: "$3,500",
       features: [
         "3-5 warmed email inboxes",
-        "500-1,000 emails/day capacity",
-        "Campaign setup & management",
-        "Weekly performance reports",
-        "Dedicated account manager",
-        "Hot lead delivery system",
+        "500-1,000 emails/day to pharma targets",
+        "Life sciences messaging expertise",
+        "Weekly pharma meeting reports",
+        "Dedicated life sciences account manager",
+        "Compliance-aware outreach",
       ],
       description:
-        "Perfect for businesses getting started with systematic cold email outreach. Includes everything except lead generation services.",
+        "Perfect for early-stage biotech companies getting started with pharmaceutical outreach. Includes industry expertise and compliance guidance.",
       leadGen: false,
     },
     growth: {
-      name: "Growth Package",
-      price: "$5,000",
+      name: "Pharma Growth Package",
+      price: "$7,500",
       features: [
         "8-12 warmed email inboxes",
-        "1,500-2,500 emails/day capacity",
-        "Advanced campaign optimization",
-        "Bi-weekly strategy calls",
-        "Priority support",
-        "Hot lead delivery system",
-        "Lead generation included",
+        "1,500-2,500 emails/day to pharma/biotech",
+        "Advanced pharma targeting & personalization",
+        "Bi-weekly strategy calls with life sciences expert",
+        "Priority support & optimization",
+        "Regulatory compliance guidance",
+        "Pharma database & lead generation included",
       ],
       description:
-        "Best value for scaling businesses. Includes comprehensive lead generation services and premium support.",
+        "Best for scaling life sciences companies. Includes comprehensive pharma database access and premium industry expertise.",
       leadGen: true,
     },
     scale: {
-      name: "Scale Package",
-      price: "$10,000",
+      name: "Enterprise Pharma Package",
+      price: "$15,000",
       features: [
         "20+ warmed email inboxes",
-        "3,000+ emails/day capacity",
-        "White-glove campaign management",
-        "Weekly strategy & optimization",
-        "Dedicated success manager",
-        "Hot lead delivery system",
-        "Premium lead generation",
+        "3,000+ emails/day to global pharma",
+        "White-glove life sciences campaign management",
+        "Weekly strategy & pharma market insights",
+        "Dedicated life sciences success manager",
+        "Global pharma compliance expertise",
+        "Premium pharma database & intelligence",
       ],
       description:
-        "Enterprise-grade cold email outreach for maximum scale. Includes premium lead generation and white-glove service.",
+        "Enterprise-grade pharmaceutical outreach for maximum scale. Includes global pharma intelligence and white-glove service.",
       leadGen: true,
     },
   }
@@ -85,10 +85,11 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
             <div className="bg-green-50 p-3 rounded-lg mb-4 text-sm">
               <div className="flex items-center text-green-800">
                 <Target className="h-4 w-4 mr-2" />
-                <span className="font-semibold">Lead Generation Included</span>
+                <span className="font-semibold">Pharma Database Access Included</span>
               </div>
               <p className="text-green-700 mt-1">
-                We'll research and identify your ideal prospects, so you don't have to worry about finding leads.
+                We'll research and identify your ideal pharmaceutical and biotech prospects, so you don't have to worry
+                about finding the right contacts.
               </p>
             </div>
           )}
@@ -127,7 +128,7 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
             onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
           >
             <Calendar className="mr-2 h-4 w-4" />
-            Book Strategy Call (Recommended)
+            Book Pharma Strategy Call (Recommended)
           </Button>
 
           <Button
@@ -167,7 +168,8 @@ export default function PaymentModal({ isOpen, onClose, packageType }: PaymentMo
         </div>
 
         <p className="text-sm text-slate-500 mt-4 text-center">
-          We recommend booking a strategy call first to ensure the best fit for your business needs and goals.
+          We recommend booking a pharma strategy call first to ensure the best fit for your life sciences outreach
+          needs.
         </p>
       </div>
     </div>

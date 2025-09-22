@@ -5,34 +5,34 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 
 const faqs = [
   {
-    question: "What exactly do you deliver?",
+    question: "How do you ensure compliance with pharmaceutical industry regulations?",
     answer:
-      "We run systematic cold email campaigns and deliver hot leads to you. These are prospects who have responded positively to our outreach and are interested in learning more. You'll need to follow up with calls to convert them into meetings and sales.",
+      "We follow all pharmaceutical industry guidelines for professional communications, including anti-kickback regulations and transparency requirements. Our messaging is designed to be informational and relationship-building focused, avoiding any promotional content that could violate compliance standards.",
   },
   {
-    question: "Do I still need to make cold calls?",
+    question: "What types of pharmaceutical and biotech contacts can you reach?",
     answer:
-      "Yes. We generate interested prospects through cold email, but you'll still need to call these hot leads to book meetings and close deals. Think of us as your lead generation engine that feeds your sales team.",
+      "We target VP+ level executives in business development, licensing, partnerships, R&D, and commercial teams at pharmaceutical and biotech companies. Our database includes contacts at Big Pharma, mid-size pharma, and emerging biotech companies globally.",
   },
   {
-    question: "How do you ensure high email deliverability?",
+    question: "How do you personalize outreach for life sciences companies?",
     answer:
-      "We use advanced email warming, domain rotation, and deliverability optimization to maintain 99%+ inbox delivery rates. Our infrastructure is designed to avoid spam filters and protect your sender reputation.",
+      "Our team understands therapeutic areas, drug development stages, and partnership dynamics. We research each target company's pipeline, recent deals, and strategic focus areas to create highly relevant, personalized messaging that resonates with pharma executives.",
   },
   {
-    question: "What's included in lead generation?",
+    question: "What's the typical response rate for pharma outreach?",
     answer:
-      "For Growth and Scale packages, we research and identify your ideal prospects using advanced targeting criteria. We build custom prospect lists based on your ideal customer profile, so you don't have to worry about finding leads.",
+      "Our life sciences campaigns typically achieve 12-18% response rates, significantly higher than generic outreach. This is due to our industry expertise, targeted messaging, and understanding of what motivates pharmaceutical decision makers.",
   },
   {
-    question: "How quickly can we get started?",
+    question: "How quickly can we start reaching pharmaceutical companies?",
     answer:
-      "Most clients are up and running within 3-5 business days after providing the necessary access and approvals. We handle all the technical setup, email warming, and campaign creation.",
+      "Most life sciences clients are up and running within 5-7 business days. We need time to research your specific therapeutic areas, competitive landscape, and ideal pharma targets to ensure maximum relevance and compliance.",
   },
   {
-    question: "What if the leads don't convert?",
+    question: "Do you work with early-stage biotech companies?",
     answer:
-      "Lead conversion depends on your follow-up and sales process. We focus on generating interested prospects through our email campaigns. We'll work with you to optimize messaging and targeting to improve lead quality over time.",
+      "Yes, we work with biotech companies at all stages - from pre-clinical startups seeking partnerships to commercial-stage companies looking to expand their pharma relationships. Our Biotech Starter package is designed specifically for early-stage companies.",
   },
 ]
 
@@ -43,8 +43,10 @@ export default function FAQSection() {
     <section className="py-24 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">Get answers to common questions about our service</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Life Sciences Outreach FAQ</h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Common questions about pharmaceutical and biotech outreach
+          </p>
         </div>
 
         <div className="max-w-3xl mx-auto">

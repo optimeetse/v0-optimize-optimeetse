@@ -44,7 +44,7 @@ export default function ContactForm() {
       setSubmitStatus({
         type: "success",
         message:
-          "Thank you for your interest! We'll get back to you within 24 hours. For immediate assistance, please call (310) 429-0828.",
+          "Thank you for your interest! We'll get back to you within 24 hours with a custom pharma outreach strategy. For immediate assistance, please call (310) 429-0828.",
       })
 
       // Reset form
@@ -73,10 +73,10 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-      <h3 className="text-2xl font-bold text-slate-900 mb-6">Get Started Today</h3>
+      <h3 className="text-2xl font-bold text-slate-900 mb-6">Get Your Pharma Outreach Strategy</h3>
       <p className="text-slate-600 mb-8">
-        Fill out the form below and we'll be in touch within 24 hours to discuss your needs and recommend the best
-        package for your business.
+        Tell us about your life sciences company and we'll create a custom strategy to connect you with the right
+        pharmaceutical and biotech decision makers.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -105,7 +105,7 @@ export default function ContactForm() {
               required
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="john@company.com"
+              placeholder="john@biotech-company.com"
               className="w-full !bg-white !text-black !border-slate-300 !placeholder-gray-500 focus-visible:ring-offset-0"
             />
           </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
               required
               value={formData.company}
               onChange={(e) => handleChange("company", e.target.value)}
-              placeholder="Acme Corp"
+              placeholder="Biotech Innovations Inc."
               className="w-full !bg-white !text-black !border-slate-300 !placeholder-gray-500 focus-visible:ring-offset-0"
             />
           </div>
@@ -143,17 +143,17 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="package" className="block text-sm font-medium text-slate-700 mb-2">
-            Interested Solution
+            Interested Package
           </label>
           <Select value={formData.package} onValueChange={(value) => handleChange("package", value)}>
             <SelectTrigger className="!bg-white !text-black !placeholder-gray-500 !border-slate-300 focus:ring-offset-0 focus-visible:ring-offset-0">
-              <SelectValue placeholder="Select your preferred solution" />
+              <SelectValue placeholder="Select your preferred package" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="starter">Starter Package ($2,500/month)</SelectItem>
-              <SelectItem value="growth">Growth Package ($5,000/month)</SelectItem>
-              <SelectItem value="scale">Scale Package ($10,000/month)</SelectItem>
-              <SelectItem value="custom">Custom Solution</SelectItem>
+              <SelectItem value="biotech-starter">Biotech Starter ($3,500/month)</SelectItem>
+              <SelectItem value="pharma-growth">Pharma Growth ($7,500/month)</SelectItem>
+              <SelectItem value="enterprise-pharma">Enterprise Pharma ($15,000/month)</SelectItem>
+              <SelectItem value="custom">Custom Life Sciences Solution</SelectItem>
               <SelectItem value="not-sure">Not Sure Yet - Need Guidance</SelectItem>
             </SelectContent>
           </Select>
@@ -161,14 +161,14 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
-            Tell us about your business
+            Tell us about your pharma outreach goals
           </label>
           <Textarea
             id="message"
             rows={4}
             value={formData.message}
             onChange={(e) => handleChange("message", e.target.value)}
-            placeholder="What's your current revenue? What challenges are you facing with lead generation? Any specific goals for meetings per month?"
+            placeholder="What type of pharmaceutical/biotech companies do you want to reach? Are you looking for partnerships, licensing deals, or service contracts? What's your current approach to pharma outreach?"
             className="w-full !bg-white !border-slate-300 !placeholder-gray-500 !text-black focus-visible:ring-offset-0"
           />
         </div>
@@ -186,12 +186,12 @@ export default function ContactForm() {
         )}
 
         <Button type="submit" disabled={isSubmitting} className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3">
-          {isSubmitting ? "Sending..." : "Send Message & Get Started"}
+          {isSubmitting ? "Sending..." : "Get My Pharma Outreach Strategy"}
         </Button>
       </form>
 
       <div className="mt-6 pt-6 border-t border-slate-200 text-center">
-        <p className="text-sm text-slate-500 mb-3">Prefer to talk directly? Call us now:</p>
+        <p className="text-sm text-slate-500 mb-3">Prefer to discuss your pharma outreach needs directly?</p>
         <Button
           variant="outline"
           onClick={() => window.open("tel:+13104290828")}
