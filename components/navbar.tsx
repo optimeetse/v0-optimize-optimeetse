@@ -1,130 +1,103 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, PhoneCall } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
+import Logo from "@/components/logo"
+import { trackButtonClick } from "@/components/analytics-tracker"
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleNavClick = (linkName: string) => {
+    trackButtonClick(linkName, "navbar")
+    setIsOpen(false)
+  }
+
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/blog", label: "Blog" },
+    { href: "#pricing", label: "Pricing" },
+    { href: "#contact", label: "Contact" },
+  ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/80">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold text-white">Opitmeet</span>
-            <span className="ml-2 text-sm text-cyan-400">Sales Engine</span>
-          </Link>
-        </div>
+    <nav className="sticky top-0 z-50 w-full border-b border-slate-200/20 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/60">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center space-x-2" onClick={() => handleNavClick("logo")}>
+              <Logo />
+              <span className="text-xl font-bold text-white">Opitmeet</span>
+            </Link>
+          </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="#features" className="text-sm text-slate-300 hover:text-white transition-colors">
-            Features
-          </Link>
-          <Link href="#about" className="text-sm text-slate-300 hover:text-white transition-colors">
-            About
-          </Link>
-          <Link href="#pricing" className="text-sm text-slate-300 hover:text-white transition-colors">
-            Pricing
-          </Link>
-          <Link href="/blog" className="text-sm text-slate-300 hover:text-white transition-colors">
-            Blog
-          </Link>
-          <Link href="#contact" className="text-sm text-slate-300 hover:text-white transition-colors">
-            Contact
-          </Link>
-        </nav>
-
-        <div className="hidden md:flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-slate-300 hover:text-white"
-            onClick={() => window.open("tel:+13104290828")}
-          >
-            <PhoneCall className="mr-2 h-4 w-4" />
-            (310) 429-0828
-          </Button>
-          <Button
-            size="sm"
-            className="bg-cyan-500 hover:bg-cyan-600 text-white"
-            onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
-          >
-            Get Started
-          </Button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 rounded-md text-slate-300 hover:text-white"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800">
-          <div className="container mx-auto px-4 py-4 space-y-4">
-            <Link
-              href="#features"
-              className="block py-2 text-slate-300 hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Features
-            </Link>
-            <Link
-              href="#about"
-              className="block py-2 text-slate-300 hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="#pricing"
-              className="block py-2 text-slate-300 hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/blog"
-              className="block py-2 text-slate-300 hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-            </Link>
-            <Link
-              href="#contact"
-              className="block py-2 text-slate-300 hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <div className="pt-4 border-t border-slate-800 flex flex-col space-y-3">
-              <Button
-                variant="outline"
-                size="sm"
-                className="justify-center border-slate-700 bg-transparent"
-                onClick={() => window.open("tel:+13104290828")}
-              >
-                <PhoneCall className="mr-2 h-4 w-4" />
-                (310) 429-0828
-              </Button>
-              <Button
-                size="sm"
-                className="justify-center bg-cyan-500 hover:bg-cyan-600"
-                onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
-              >
-                Get Started
-              </Button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  onClick={() => handleNavClick(item.label)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
+
+          <div className="hidden md:block">
+            <Button
+              className="bg-cyan-500 hover:bg-cyan-600 text-white"
+              onClick={() => {
+                trackButtonClick("Get Started CTA", "navbar")
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              }}
+            >
+              Get Started
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-white">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open main menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-slate-900 border-slate-700">
+                <div className="flex flex-col space-y-4 mt-8">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-colors"
+                      onClick={() => handleNavClick(item.label)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <Button
+                    className="bg-cyan-500 hover:bg-cyan-600 text-white mt-4"
+                    onClick={() => {
+                      trackButtonClick("Get Started CTA", "mobile_menu")
+                      setIsOpen(false)
+                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                    }}
+                  >
+                    Get Started
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
-      )}
-    </header>
+      </div>
+    </nav>
   )
 }

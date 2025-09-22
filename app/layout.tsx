@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
 import type { Metadata } from "next"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -37,6 +38,32 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: dark)" />
+
+        {/* Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'GA_MEASUREMENT_ID', {
+              page_title: document.title,
+              page_location: window.location.href,
+            });
+          `}
+        </Script>
+
+        {/* Leadsy.ai tracking */}
+        <Script id="leadsy-tracking" strategy="afterInteractive">
+          {`
+            (function() {
+              var script = document.createElement('script');
+              script.src = 'https://app.leadsy.ai/track.js';
+              script.async = true;
+              document.head.appendChild(script);
+            })();
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">

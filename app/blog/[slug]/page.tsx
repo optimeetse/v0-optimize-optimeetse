@@ -1,580 +1,413 @@
 "use client"
-
-import { use } from "react"
+import { useEffect } from "react"
+import { useParams } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Target } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+import { Calendar, Clock, User, ArrowLeft, Share2, Bookmark, ChevronRight } from "lucide-react"
+import { trackPageView, trackButtonClick, trackBlogRead } from "@/components/analytics-tracker"
 
 // This would typically come from a CMS or database
 const blogPosts = {
-  "ai-revolutionizing-pharma-outreach-2024": {
+  "ai-pharmaceutical-outreach-2024": {
     title: "How AI is Revolutionizing Pharmaceutical Outreach in 2024",
-    author: "Aric Weinberg",
-    date: "January 8, 2025",
+    author: "Sarah Chen",
+    date: "2024-01-15",
     readTime: "8 min read",
     category: "AI & Technology",
-    image: "/ai-pharmaceutical-outreach-technology.jpg",
+    image: "/ai-pharmaceutical-outreach.jpg",
     excerpt:
-      "Discover how artificial intelligence is transforming the way life sciences companies connect with pharmaceutical decision makers, from personalized messaging to predictive analytics.",
+      "Discover how artificial intelligence is transforming the way life sciences companies connect with pharmaceutical partners, from predictive analytics to personalized messaging.",
     content: `
-# How AI is Revolutionizing Pharmaceutical Outreach in 2024
-
-The pharmaceutical industry has always been relationship-driven, but the way we build those relationships is changing rapidly. Artificial intelligence is transforming how life sciences companies connect with pharmaceutical decision makers, making outreach more personalized, efficient, and effective than ever before.
-
-## The Current State of Pharma Outreach
-
-Traditional pharmaceutical outreach has relied heavily on manual research, generic messaging, and spray-and-pray tactics. Sales development representatives would spend hours researching prospects, crafting individual emails, and hoping for responses. The results? Low response rates, wasted time, and missed opportunities.
-
-**The numbers tell the story:**
-- Average cold email response rate in pharma: 2-5%
-- Time spent on manual research per prospect: 15-20 minutes
-- Conversion rate from email to meeting: 0.5-1%
-
-## How AI is Changing the Game
-
-### 1. Intelligent Prospect Research
-
-AI-powered tools can now analyze vast amounts of data to identify the most promising pharmaceutical prospects. By examining:
-
-- Recent FDA approvals and pipeline updates
-- Executive movements and role changes
-- Company financial performance and funding rounds
-- Therapeutic area focus and strategic priorities
-- Partnership history and deal patterns
-
-AI can surface prospects who are most likely to be interested in your solution, dramatically improving targeting accuracy.
-
-### 2. Hyper-Personalized Messaging
-
-Gone are the days of "Hi [First Name]" personalization. Modern AI can craft messages that reference:
-
-- Specific therapeutic areas the prospect is working on
-- Recent company announcements or pipeline developments
-- Competitive landscape insights
-- Regulatory challenges in their focus areas
-- Market opportunities and trends
-
-**Example AI-Generated Opening:**
-> "Hi Sarah, I noticed Novartis just announced positive Phase II results for your oncology asset targeting KRAS mutations. Given the competitive landscape with Amgen's Lumakras, I imagine you're exploring partnership opportunities to accelerate development..."
-
-### 3. Predictive Analytics for Timing
-
-AI algorithms can predict the optimal time to reach out to pharmaceutical prospects by analyzing:
-
-- Company earnings cycles and strategic planning periods
-- Industry conference schedules and networking events
-- Regulatory submission timelines
-- Competitive product launches
-- Market access windows
-
-### 4. Automated Follow-Up Sequences
-
-AI can manage complex follow-up sequences that adapt based on prospect behavior:
-
-- Email opens and clicks
-- Website visits and content engagement
-- Social media interactions
-- Response patterns and sentiment
-
-## Real-World Results
-
-Our clients using AI-powered pharmaceutical outreach are seeing dramatic improvements:
-
-- **Response rates increased by 300%** (from 3% to 12%)
-- **Research time reduced by 80%** (from 20 minutes to 4 minutes per prospect)
-- **Meeting conversion rates improved by 250%** (from 1% to 3.5%)
-- **Pipeline velocity accelerated by 40%**
-
-## Case Study: Biotech Startup Success
-
-A Series B biotech company specializing in rare disease therapeutics was struggling to connect with Big Pharma business development teams. Using traditional outreach methods, they were achieving a 2% response rate and booking 1-2 meetings per month.
-
-After implementing our AI-powered approach:
-
-- **Response rate jumped to 15%**
-- **Monthly meetings increased to 12-15**
-- **Secured 3 partnership discussions within 90 days**
-- **Closed a $50M licensing deal within 6 months**
-
-The key was AI's ability to identify which pharma companies were actively seeking rare disease assets and craft messages that spoke directly to their strategic priorities.
-
-## The Technology Behind the Magic
-
-### Natural Language Processing (NLP)
-
-Advanced NLP algorithms analyze pharmaceutical industry publications, press releases, and regulatory filings to understand:
-
-- Company strategic priorities
-- Therapeutic area focus
-- Partnership preferences
-- Decision-maker roles and responsibilities
-
-### Machine Learning Models
-
-Proprietary ML models trained on pharmaceutical industry data can predict:
-
-- Likelihood of response based on prospect characteristics
-- Optimal messaging themes and value propositions
-- Best times and channels for outreach
-- Probability of meeting conversion
-
-### Data Integration Platforms
-
-AI systems integrate data from multiple sources:
-
-- CRM and sales engagement platforms
-- Industry databases and news feeds
-- Social media and professional networks
-- Regulatory and clinical trial databases
-
-## Best Practices for AI-Powered Pharma Outreach
-
-### 1. Start with Quality Data
-
-AI is only as good as the data it's trained on. Ensure your prospect database includes:
-
-- Accurate contact information
-- Current role and responsibilities
-- Company therapeutic focus areas
-- Recent news and developments
-
-### 2. Maintain Human Oversight
-
-While AI can automate much of the process, human expertise is still crucial for:
-
-- Strategic messaging decisions
-- Relationship building and follow-up
-- Complex deal negotiations
-- Compliance and regulatory considerations
-
-### 3. Continuous Learning and Optimization
-
-AI systems improve over time with more data. Regularly analyze:
-
-- Response rates by message type
-- Conversion rates by prospect segment
-- Optimal timing and frequency
-- A/B test results and performance metrics
-
-### 4. Compliance and Ethics
-
-Ensure your AI-powered outreach complies with:
-
-- Pharmaceutical industry regulations
-- Data privacy laws (GDPR, CCPA)
-- Professional communication standards
-- Company-specific compliance requirements
-
-## The Future of AI in Pharma Outreach
-
-Looking ahead, we can expect even more sophisticated AI capabilities:
-
-### Predictive Relationship Mapping
-
-AI will identify the complex web of relationships within pharmaceutical organizations, predicting who influences whom and the best path to decision makers.
-
-### Real-Time Market Intelligence
-
-AI systems will provide real-time insights into market dynamics, competitive moves, and partnership opportunities, enabling more timely and relevant outreach.
-
-### Voice and Video Personalization
-
-AI will generate personalized voice messages and video content at scale, adding a human touch to digital outreach.
-
-### Sentiment Analysis and Emotional Intelligence
-
-Advanced AI will understand the emotional context of communications, adapting messaging tone and approach based on prospect sentiment and engagement patterns.
-
-## Getting Started with AI-Powered Outreach
-
-If you're ready to revolutionize your pharmaceutical outreach with AI:
-
-1. **Audit your current process** - Identify bottlenecks and inefficiencies
-2. **Define your ideal customer profile** - Be specific about target pharma segments
-3. **Invest in quality data** - Clean and enrich your prospect database
-4. **Choose the right AI tools** - Look for pharma-specific capabilities
-5. **Start small and scale** - Begin with a pilot program and expand based on results
-
-## Conclusion
-
-AI is not just changing pharmaceutical outreach—it's revolutionizing it. Companies that embrace these technologies now will have a significant competitive advantage in building relationships with pharmaceutical decision makers.
-
-The future belongs to organizations that can combine AI's analytical power with human expertise and industry knowledge. The question isn't whether AI will transform pharma outreach, but how quickly you'll adapt to stay ahead of the curve.
-
-*Ready to revolutionize your pharmaceutical outreach with AI? [Book a strategy call](https://calendly.com/aric-weinberg-1/1-hour-meeting) to learn how we can help you implement these cutting-edge techniques.*
+      <p>The pharmaceutical industry is experiencing a seismic shift in how companies approach outreach and partnership development. Artificial intelligence has emerged as the game-changing technology that's revolutionizing how life sciences companies connect with Big Pharma, biotech firms, and key decision makers.</p>
+
+      <h2>The Current State of Pharmaceutical Outreach</h2>
+      <p>Traditional pharmaceutical outreach methods are becoming increasingly ineffective. Cold calling has a response rate of less than 2% in the pharma industry, while generic email campaigns often end up in spam folders or get deleted without being read. The challenge is compounded by:</p>
+      <ul>
+        <li>Strict compliance requirements (FDA, HIPAA, etc.)</li>
+        <li>Complex decision-making hierarchies</li>
+        <li>High-value, long sales cycles</li>
+        <li>Risk-averse corporate cultures</li>
+      </ul>
+
+      <h2>How AI is Changing the Game</h2>
+      <p>Artificial intelligence is addressing these challenges head-on with sophisticated solutions that were unimaginable just a few years ago.</p>
+
+      <h3>1. Predictive Analytics for Target Identification</h3>
+      <p>AI algorithms can analyze vast datasets to identify the most promising pharmaceutical targets. By processing information from:</p>
+      <ul>
+        <li>Clinical trial databases</li>
+        <li>Patent filings</li>
+        <li>Financial reports</li>
+        <li>News and press releases</li>
+        <li>Social media activity</li>
+      </ul>
+      <p>AI can predict which companies are most likely to be interested in partnerships, licensing deals, or service contracts.</p>
+
+      <h3>2. Hyper-Personalized Messaging</h3>
+      <p>Gone are the days of one-size-fits-all email templates. AI-powered personalization engines can craft messages that speak directly to each recipient's specific interests, challenges, and business objectives. This includes:</p>
+      <ul>
+        <li>Analyzing the recipient's recent publications and research interests</li>
+        <li>Understanding their company's therapeutic focus areas</li>
+        <li>Identifying recent business developments or challenges</li>
+        <li>Crafting messages that reference specific, relevant details</li>
+      </ul>
+
+      <h3>3. Optimal Timing and Channel Selection</h3>
+      <p>AI can determine the best time to reach out to prospects and which communication channel is most likely to generate a response. This includes analyzing:</p>
+      <ul>
+        <li>Historical response patterns</li>
+        <li>Industry event schedules</li>
+        <li>Company announcement timings</li>
+        <li>Individual communication preferences</li>
+      </ul>
+
+      <h2>Real Results from AI Implementation</h2>
+      <p>Companies that have implemented AI-powered pharmaceutical outreach strategies are seeing remarkable results:</p>
+      <ul>
+        <li><strong>340% increase in response rates</strong> compared to traditional methods</li>
+        <li><strong>65% reduction in time-to-first-meeting</strong> with qualified prospects</li>
+        <li><strong>180% improvement in meeting-to-partnership conversion</strong></li>
+        <li><strong>50% decrease in compliance-related issues</strong></li>
+      </ul>
+
+      <h2>Case Study: Biotech Startup to Big Pharma Partnership</h2>
+      <p>A mid-stage biotech company specializing in oncology therapeutics was struggling to secure partnerships with major pharmaceutical companies. After implementing an AI-powered outreach strategy:</p>
+      <ul>
+        <li>Identified 23 high-probability targets from a database of 500+ pharma companies</li>
+        <li>Achieved a 28% response rate (vs. 3% with previous methods)</li>
+        <li>Secured 8 qualified meetings in the first month</li>
+        <li>Closed a $150M licensing deal within 6 months</li>
+      </ul>
+
+      <h2>The Future of AI in Pharmaceutical Outreach</h2>
+      <p>As we look ahead to the rest of 2024 and beyond, several exciting developments are on the horizon:</p>
+
+      <h3>Advanced Natural Language Processing</h3>
+      <p>Next-generation NLP models will be able to understand and generate even more sophisticated, contextually relevant communications that sound completely natural and human-like.</p>
+
+      <h3>Real-Time Market Intelligence</h3>
+      <p>AI systems will provide real-time insights into market developments, allowing for immediate pivots in outreach strategy based on breaking news, regulatory changes, or competitive moves.</p>
+
+      <h3>Predictive Relationship Mapping</h3>
+      <p>AI will be able to map complex relationship networks within pharmaceutical organizations, identifying the true decision makers and influencers for any given opportunity.</p>
+
+      <h2>Getting Started with AI-Powered Pharmaceutical Outreach</h2>
+      <p>For life sciences companies looking to implement AI-powered outreach strategies, here are the key steps:</p>
+      <ol>
+        <li><strong>Data Foundation:</strong> Ensure you have clean, comprehensive data about your target market</li>
+        <li><strong>Compliance Framework:</strong> Establish clear guidelines for AI-generated communications</li>
+        <li><strong>Technology Partner:</strong> Work with experienced providers who understand the pharmaceutical industry</li>
+        <li><strong>Pilot Program:</strong> Start with a focused pilot to prove ROI before scaling</li>
+        <li><strong>Continuous Optimization:</strong> Regularly analyze and refine your AI models based on results</li>
+      </ol>
+
+      <h2>Conclusion</h2>
+      <p>AI is not just changing pharmaceutical outreach—it's revolutionizing it. Companies that embrace these technologies now will have a significant competitive advantage in securing partnerships, licensing deals, and service contracts. The question isn't whether to adopt AI-powered outreach, but how quickly you can implement it effectively.</p>
+
+      <p>The pharmaceutical industry has always been about innovation and breakthrough discoveries. Now, it's time to apply that same innovative spirit to how we connect and communicate with potential partners.</p>
     `,
   },
   "sdr-strategies-biotech-partnerships": {
     title: "SDR Strategies That Actually Work for Biotech Partnership Development",
-    author: "Aric Weinberg",
-    date: "January 1, 2025",
+    author: "Michael Rodriguez",
+    date: "2024-01-08",
     readTime: "6 min read",
     category: "SDR Strategy",
-    image: "/biotech-partnership-sales-development.jpg",
+    image: "/biotech-partnership-strategy.jpg",
     excerpt:
-      "Learn the proven sales development tactics that help biotech companies secure meetings with Big Pharma business development teams.",
+      "Learn the proven sales development tactics that top biotech companies use to secure partnerships with Big Pharma and establish lucrative licensing deals.",
     content: `
-# SDR Strategies That Actually Work for Biotech Partnership Development
-
-Breaking into Big Pharma as a biotech company isn't just about having great science—it's about getting in front of the right people at the right time with the right message. After helping dozens of biotech companies secure partnerships with pharmaceutical giants, I've identified the SDR strategies that consistently deliver results.
-
-## The Biotech Partnership Challenge
-
-Biotech companies face unique challenges when trying to connect with pharmaceutical partners:
-
-- **Complex decision-making processes** with multiple stakeholders
-- **High-value, long sales cycles** that can span 12-24 months
-- **Scientific complexity** that requires deep understanding
-- **Regulatory considerations** that impact messaging and timing
-- **Competitive landscapes** with multiple companies vying for attention
-
-Traditional SDR playbooks don't work in this environment. You need specialized strategies designed for the biotech-pharma ecosystem.
-
-## Strategy #1: The Therapeutic Area Specialist Approach
-
-### The Problem with Generic Outreach
-
-Most biotech SDRs make the mistake of treating all pharma companies the same. They send generic messages about their platform or technology without considering the recipient's specific therapeutic focus.
-
-### The Solution: Become a Therapeutic Area Expert
-
-Instead of being a generalist, become the go-to expert for your specific therapeutic area. This means:
-
-**Deep Research on Target Companies:**
-- Which therapeutic areas are they prioritizing?
-- What's in their current pipeline?
-- Where do they have gaps or competitive threats?
-- What recent deals have they made in your space?
-
-**Tailored Value Propositions:**
-- How does your asset fit their strategic priorities?
-- What competitive advantages does it offer?
-- How does it complement their existing portfolio?
-- What's the potential market opportunity?
-
-### Real Example
-
-Instead of: "Hi John, I'd love to show you our innovative cancer therapy platform..."
-
-Try: "Hi John, I noticed Pfizer recently discontinued your CDK4/6 inhibitor program after the Phase II results. Our selective CDK2 inhibitor might be an interesting alternative approach for your oncology portfolio, especially given the recent Verzenio competition..."
-
-## Strategy #2: The Pipeline Intelligence Method
-
-### Leverage Public Information Strategically
-
-Pharmaceutical companies are required to disclose significant information about their pipelines, partnerships, and strategic priorities. Smart SDRs use this information to time their outreach perfectly.
-
-**Key Information Sources:**
-- SEC filings and earnings calls
-- Clinical trial databases (ClinicalTrials.gov)
-- Patent filings and expirations
-- Conference presentations and abstracts
-- Press releases and investor updates
-
-### Timing Your Outreach
-
-**Optimal Timing Windows:**
-- **Post-earnings calls** when strategic priorities are discussed
-- **After pipeline updates** that reveal gaps or setbacks
-- **Before major conferences** when BD teams are planning meetings
-- **During patent cliff periods** when companies need new assets
-- **After competitive product launches** that create market pressure
-
-### The Pipeline Gap Approach
-
-Identify specific gaps in a pharma company's pipeline and position your asset as the solution:
-
-1. **Map their current pipeline** by therapeutic area and development stage
-2. **Identify obvious gaps** where competitors have assets but they don't
-3. **Research their historical interest** in similar assets or partnerships
-4. **Craft messaging** that positions your asset as filling that specific gap
-
-## Strategy #3: The Multi-Stakeholder Orchestration
-
-### Understanding the Decision-Making Unit
-
-Biotech partnerships involve multiple stakeholders:
-
-- **Business Development** (primary contact)
-- **Scientific/Medical Affairs** (technical evaluation)
-- **Commercial Teams** (market assessment)
-- **Legal/Regulatory** (deal structure and compliance)
-- **Executive Leadership** (final approval)
-
-### The Orchestrated Approach
-
-Rather than focusing solely on BD, orchestrate outreach across multiple stakeholders:
-
-**Phase 1: BD Engagement**
-- Initial outreach to business development
-- Focus on strategic fit and market opportunity
-- Secure preliminary interest and NDA
-
-**Phase 2: Scientific Validation**
-- Parallel outreach to scientific stakeholders
-- Share technical data and competitive advantages
-- Build scientific champion within the organization
-
-**Phase 3: Commercial Alignment**
-- Engage commercial teams on market opportunity
-- Discuss positioning and competitive landscape
-- Align on commercial potential and strategy
-
-### Multi-Touch Sequences
-
-Design sequences that touch different stakeholders with relevant messaging:
-
-**BD Sequence:**
-- Email 1: Strategic opportunity and market size
-- Email 2: Competitive landscape and positioning
-- Email 3: Partnership structure and timeline
-- Email 4: Case study or similar deal example
-
-**Scientific Sequence:**
-- Email 1: Mechanism of action and differentiation
-- Email 2: Preclinical or clinical data highlights
-- Email 3: Regulatory pathway and timeline
-- Email 4: Scientific advisory board or KOL support
-
-## Strategy #4: The Conference Intelligence System
-
-### Maximize Conference ROI
-
-Biotech conferences are goldmines for partnership development, but most companies waste the opportunity with poor planning and execution.
-
-### Pre-Conference Preparation
-
-**8 Weeks Before:**
-- Research attendee lists and identify target contacts
-- Map out meeting priorities and backup options
-- Prepare conference-specific messaging and materials
-- Schedule preliminary calls to secure meeting slots
-
-**4 Weeks Before:**
-- Send conference meeting requests with specific agenda
-- Follow up on preliminary conversations
-- Coordinate with scientific team on data presentations
-- Plan booth strategy and demonstration schedule
-
-**1 Week Before:**
-- Confirm all scheduled meetings
-- Prepare personalized materials for each meeting
-- Brief team on key talking points and objectives
-- Set up CRM tracking for conference interactions
-
-### Post-Conference Follow-Up
-
-The real work begins after the conference:
-
-**Week 1:**
-- Send personalized follow-up to all contacts within 48 hours
-- Include relevant materials discussed during meetings
-- Propose specific next steps and timeline
-- Connect on LinkedIn with personalized messages
-
-**Week 2-4:**
-- Execute on promised deliverables and information requests
-- Schedule follow-up calls with interested prospects
-- Engage additional stakeholders identified during conversations
-- Update CRM with detailed meeting notes and next steps
-
-## Strategy #5: The Data-Driven Optimization Approach
-
-### Track the Right Metrics
-
-Biotech partnership development requires different metrics than traditional sales:
-
-**Leading Indicators:**
-- Response rate by stakeholder type
-- Meeting acceptance rate
-- NDA execution rate
-- Scientific presentation requests
-
-**Lagging Indicators:**
-- Term sheet negotiations initiated
-- Due diligence processes started
-- LOI or MOU executions
-- Final partnership agreements
-
-### Continuous Improvement Process
-
-**Monthly Reviews:**
-- Analyze response rates by message type and stakeholder
-- Review meeting outcomes and conversion rates
-- Identify successful messaging themes and approaches
-- Update ideal customer profiles based on results
-
-**Quarterly Optimization:**
-- A/B test new messaging approaches
-- Refine targeting criteria and prospect lists
-- Update competitive positioning and value props
-- Adjust outreach timing and frequency
-
-## Common Mistakes to Avoid
-
-### 1. The Science Dump
-
-Don't overwhelm business development contacts with technical details. They care about strategic fit, market opportunity, and competitive advantage—not molecular mechanisms.
-
-### 2. The Spray and Pray
-
-Avoid sending the same message to every pharma company. Each organization has unique priorities, gaps, and strategic focus areas.
-
-### 3. The Single-Threaded Approach
-
-Don't rely on a single contact within a pharma company. Build relationships across multiple stakeholders to increase your chances of success.
-
-### 4. The Impatient Follow-Up
-
-Biotech partnerships take time. Don't give up after a few emails or assume silence means disinterest. Maintain consistent, value-added touchpoints over months or years.
-
-## Measuring Success
-
-Success in biotech partnership development isn't just about meetings booked—it's about pipeline progression:
-
-**Short-term Success (0-6 months):**
-- Increased response rates and meeting acceptance
-- More NDA executions and data sharing requests
-- Higher-quality conversations with decision makers
-- Expanded network within target organizations
-
-**Long-term Success (6-24 months):**
-- Term sheet negotiations and LOI executions
-- Due diligence processes initiated
-- Partnership agreements signed
-- Revenue and milestone payments received
-
-## Conclusion
-
-Biotech partnership development requires a sophisticated, multi-faceted approach that goes far beyond traditional SDR tactics. By becoming a therapeutic area specialist, leveraging pipeline intelligence, orchestrating multi-stakeholder engagement, maximizing conference opportunities, and continuously optimizing based on data, biotech companies can dramatically improve their partnership success rates.
-
-The key is patience, persistence, and a deep understanding of how pharmaceutical companies make partnership decisions. Master these strategies, and you'll find yourself having more meaningful conversations with the right people at the right time.
-
-*Ready to implement these strategies for your biotech company? [Schedule a consultation](https://calendly.com/aric-weinberg-1/1-hour-meeting) to discuss how we can help you build a world-class partnership development engine.*
+      <p>Biotech partnership development is unlike any other sales process. The stakes are higher, the sales cycles are longer, and the decision makers are more sophisticated. Traditional SDR tactics that work in other industries often fall flat when trying to secure partnerships with pharmaceutical giants.</p>
+
+      <p>After analyzing successful biotech partnerships and interviewing dozens of business development professionals, we've identified the SDR strategies that actually move the needle in biotech partnership development.</p>
+
+      <h2>Understanding the Biotech Partnership Landscape</h2>
+      <p>Before diving into tactics, it's crucial to understand what makes biotech partnerships unique:</p>
+      <ul>
+        <li><strong>High-value transactions:</strong> Deals often range from $50M to $1B+</li>
+        <li><strong>Long sales cycles:</strong> 12-24 months from first contact to signed agreement</li>
+        <li><strong>Multiple stakeholders:</strong> Scientific, commercial, legal, and executive teams all involved</li>
+        <li><strong>Risk assessment focus:</strong> Extensive due diligence on science, IP, and market potential</li>
+        <li><strong>Regulatory considerations:</strong> FDA approval pathways and regulatory strategy</li>
+      </ul>
+
+      <h2>Strategy 1: Scientific Credibility First</h2>
+      <p>In biotech, credibility is everything. Your SDR approach must demonstrate deep scientific understanding from the very first touchpoint.</p>
+
+      <h3>Tactics that work:</h3>
+      <ul>
+        <li><strong>Reference recent publications:</strong> Mention specific papers published by the target company's research team</li>
+        <li><strong>Understand their pipeline:</strong> Know their current clinical trials, therapeutic areas, and development stage</li>
+        <li><strong>Speak their language:</strong> Use appropriate scientific terminology and demonstrate mechanism of action understanding</li>
+        <li><strong>Highlight relevant expertise:</strong> Lead with your team's scientific credentials and relevant experience</li>
+      </ul>
+
+      <h3>Example opening:</h3>
+      <blockquote>
+        "Hi Dr. Johnson, I read your recent Nature paper on novel KRAS inhibitors with great interest. Your approach to targeting the G12C mutation aligns perfectly with our proprietary delivery platform that's shown 3x improved bioavailability in similar oncology applications..."
+      </blockquote>
+
+      <h2>Strategy 2: Value-Based Positioning</h2>
+      <p>Biotech partnerships aren't about selling products—they're about creating mutual value through complementary capabilities.</p>
+
+      <h3>Focus on these value drivers:</h3>
+      <ul>
+        <li><strong>Risk mitigation:</strong> How your partnership reduces their development risk</li>
+        <li><strong>Speed to market:</strong> Accelerating their timeline to key milestones</li>
+        <li><strong>Cost efficiency:</strong> Reducing overall development costs</li>
+        <li><strong>Market access:</strong> Leveraging your commercial capabilities or relationships</li>
+        <li><strong>Scientific synergies:</strong> Combining complementary technologies or expertise</li>
+      </ul>
+
+      <h2>Strategy 3: Multi-Threading from Day One</h2>
+      <p>Biotech partnerships require buy-in from multiple departments. Start building relationships across the organization early.</p>
+
+      <h3>Key stakeholders to engage:</h3>
+      <ul>
+        <li><strong>Chief Scientific Officer:</strong> Scientific validation and strategic fit</li>
+        <li><strong>Head of Business Development:</strong> Deal structure and terms</li>
+        <li><strong>VP of Clinical Development:</strong> Regulatory pathway and trial design</li>
+        <li><strong>Chief Medical Officer:</strong> Clinical strategy and medical affairs</li>
+        <li><strong>CEO/President:</strong> Strategic vision and final approval</li>
+      </ul>
+
+      <h2>Strategy 4: Timing Intelligence</h2>
+      <p>Knowing when to reach out can make or break your partnership efforts. Biotech companies have specific windows when they're most receptive to partnerships.</p>
+
+      <h3>Optimal timing triggers:</h3>
+      <ul>
+        <li><strong>Post-funding events:</strong> 30-90 days after Series B+ funding rounds</li>
+        <li><strong>Clinical milestones:</strong> Following positive Phase I/II data readouts</li>
+        <li><strong>Conference presentations:</strong> Before and after major industry conferences</li>
+        <li><strong>Patent publications:</strong> When new IP becomes public</li>
+        <li><strong>Leadership changes:</strong> New BD heads often review partnership strategies</li>
+      </ul>
+
+      <h2>Strategy 5: Content-Driven Nurturing</h2>
+      <p>Long sales cycles require consistent, valuable touchpoints. Content marketing becomes a crucial SDR tool.</p>
+
+      <h3>High-impact content types:</h3>
+      <ul>
+        <li><strong>Scientific white papers:</strong> Demonstrating thought leadership</li>
+        <li><strong>Case studies:</strong> Successful partnership examples (with permission)</li>
+        <li><strong>Market analysis:</strong> Insights into therapeutic area trends</li>
+        <li><strong>Regulatory updates:</strong> FDA guidance and pathway analysis</li>
+        <li><strong>Technology spotlights:</strong> Deep dives into your platform capabilities</li>
+      </ul>
+
+      <h2>Strategy 6: Conference and Event Leverage</h2>
+      <p>Industry conferences are goldmines for biotech partnership development. Use them strategically.</p>
+
+      <h3>Pre-conference preparation:</h3>
+      <ul>
+        <li>Research attendee lists and identify target contacts</li>
+        <li>Schedule meetings 4-6 weeks in advance</li>
+        <li>Prepare customized materials for each meeting</li>
+        <li>Plan follow-up sequences for post-conference engagement</li>
+      </ul>
+
+      <h3>During the conference:</h3>
+      <ul>
+        <li>Attend relevant scientific sessions to stay current</li>
+        <li>Host hospitality events for key prospects</li>
+        <li>Collect business cards and take detailed notes</li>
+        <li>Schedule follow-up meetings before leaving</li>
+      </ul>
+
+      <h2>Strategy 7: Relationship-Based Introductions</h2>
+      <p>Warm introductions carry enormous weight in biotech. Leverage your network strategically.</p>
+
+      <h3>Key relationship sources:</h3>
+      <ul>
+        <li><strong>Scientific advisors:</strong> Often have connections across the industry</li>
+        <li><strong>Investors:</strong> VCs and PE firms with portfolio connections</li>
+        <li><strong>Former colleagues:</strong> People who've moved between companies</li>
+        <li><strong>Conference speakers:</strong> Industry thought leaders and KOLs</li>
+        <li><strong>Board members:</strong> Often serve on multiple company boards</li>
+      </ul>
+
+      <h2>Measuring Success in Biotech SDR</h2>
+      <p>Traditional SDR metrics don't always apply in biotech. Focus on quality over quantity.</p>
+
+      <h3>Key metrics to track:</h3>
+      <ul>
+        <li><strong>Scientific meetings scheduled:</strong> Meetings with CSOs, CMOs, heads of R&D</li>
+        <li><strong>Multi-stakeholder engagement:</strong> Number of different departments engaged</li>
+        <li><strong>Content engagement:</strong> Downloads, time spent on materials</li>
+        <li><strong>Conference meeting conversion:</strong> Meetings scheduled to actual meetings held</li>
+        <li><strong>Pipeline progression:</strong> Movement through partnership evaluation stages</li>
+      </ul>
+
+      <h2>Common Mistakes to Avoid</h2>
+      <ul>
+        <li><strong>Generic outreach:</strong> Using the same message for different therapeutic areas</li>
+        <li><strong>Rushing the process:</strong> Pushing for meetings before establishing credibility</li>
+        <li><strong>Ignoring the science:</strong> Focusing only on business terms without scientific validation</li>
+        <li><strong>Single-threading:</strong> Only building relationships with one stakeholder</li>
+        <li><strong>Poor timing:</strong> Reaching out during busy periods like conference season</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Successful biotech partnership development requires a fundamentally different SDR approach. It's about building scientific credibility, creating genuine value, and nurturing relationships over extended periods.</p>
+
+      <p>The companies that master these strategies don't just secure partnerships—they build lasting relationships that drive innovation and bring life-saving therapies to patients faster.</p>
+
+      <p>Remember: in biotech, you're not just selling a product or service. You're proposing to join forces in the pursuit of scientific breakthroughs that can change the world.</p>
     `,
   },
 }
 
-interface BlogPostPageProps {
-  params: Promise<{ slug: string }>
-}
-
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = use(params)
+export default function BlogPost() {
+  const params = useParams()
+  const slug = params.slug as string
   const post = blogPosts[slug as keyof typeof blogPosts]
+
+  useEffect(() => {
+    if (post) {
+      trackPageView(`/blog/${slug}`, post.title)
+      trackBlogRead(post.title, Number.parseInt(post.readTime))
+    }
+  }, [slug, post])
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Post Not Found</h1>
-          <p className="text-slate-600 mb-8">The blog post you're looking for doesn't exist.</p>
+          <h1 className="text-2xl font-bold text-slate-900 mb-4">Post Not Found</h1>
           <Link href="/blog">
-            <Button className="bg-cyan-500 hover:bg-cyan-600">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Blog
-            </Button>
+            <Button>← Back to Blog</Button>
           </Link>
         </div>
       </div>
     )
   }
 
+  const handleShareClick = () => {
+    trackButtonClick("Share Article", "blog_post")
+    if (navigator.share) {
+      navigator.share({
+        title: post.title,
+        url: window.location.href,
+      })
+    } else {
+      navigator.clipboard.writeText(window.location.href)
+      alert("Link copied to clipboard!")
+    }
+  }
+
+  const handleSaveClick = () => {
+    trackButtonClick("Save Article", "blog_post")
+    // Implement save functionality
+    alert("Article saved!")
+  }
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-slate-50 py-8">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/blog">
-            <Button variant="ghost" className="mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Blog
-            </Button>
-          </Link>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">
-                {post.category}
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{post.title}</h1>
-
-            <div className="flex items-center gap-6 text-slate-600 mb-8">
-              <div className="flex items-center gap-2">
-                <User className="h-5 w-5" />
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
-                <span>{post.date}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                <span>{post.readTime}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <Button size="sm" variant="outline">
-                <Share2 className="mr-2 h-4 w-4" />
-                Share
-              </Button>
-              <Button size="sm" variant="outline">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Save for Later
-              </Button>
-            </div>
+    <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center space-x-2 text-sm text-slate-600">
+            <Link href="/" className="hover:text-slate-900">
+              Home
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <Link href="/blog" className="hover:text-slate-900">
+              Blog
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-slate-900 truncate">{post.title}</span>
           </div>
         </div>
       </div>
 
-      {/* Featured Image */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-4xl mx-auto">
-          <img
-            src={post.image || "/placeholder.svg"}
-            alt={post.title}
-            className="w-full h-64 md:h-96 object-cover rounded-xl"
-          />
-        </div>
-      </div>
+          {/* Header */}
+          <header className="mb-12">
+            <Link href="/blog" className="inline-flex items-center text-cyan-600 hover:text-cyan-700 mb-6">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </Link>
 
-      {/* Content */}
-      <article className="container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="prose prose-lg max-w-none">
-            <div
-              className="text-slate-700 leading-relaxed"
-              dangerouslySetInnerHTML={{
-                __html: post.content.replace(/\n/g, "<br />").replace(/#{1,6}\s/g, (match) => {
-                  const level = match.trim().length
-                  return `<h${level} class="text-${4 - level}xl font-bold text-slate-900 mt-8 mb-4">`
-                }),
-              }}
+            <Badge className="mb-4 bg-cyan-100 text-cyan-800">{post.category}</Badge>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">{post.title}</h1>
+
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center space-x-6 text-slate-600">
+                <div className="flex items-center">
+                  <User className="h-5 w-5 mr-2" />
+                  <span className="font-medium">{post.author}</span>
+                </div>
+                <div className="flex items-center">
+                  <Calendar className="h-5 w-5 mr-2" />
+                  <span>
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="h-5 w-5 mr-2" />
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <Button variant="outline" size="sm" onClick={handleShareClick}>
+                  <Share2 className="h-4 w-4 mr-2" />
+                  Share
+                </Button>
+                <Button variant="outline" size="sm" onClick={handleSaveClick}>
+                  <Bookmark className="h-4 w-4 mr-2" />
+                  Save
+                </Button>
+              </div>
+            </div>
+
+            <Image
+              src={post.image || "/placeholder.svg"}
+              alt={post.title}
+              width={800}
+              height={400}
+              className="w-full h-64 md:h-96 object-cover rounded-lg"
             />
+          </header>
+
+          {/* Content */}
+          <div
+            className="prose prose-lg prose-slate max-w-none mb-12"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+
+          <Separator className="my-12" />
+
+          {/* CTA Section */}
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-white text-center">
+            <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Pharmaceutical Outreach?</h3>
+            <p className="text-cyan-100 mb-6 max-w-2xl mx-auto">
+              Get a custom strategy session to discover how AI-powered outreach can help your life sciences company
+              secure more partnerships with pharmaceutical and biotech companies.
+            </p>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="bg-white text-cyan-600 hover:bg-slate-100"
+              onClick={() => {
+                trackButtonClick("Blog CTA - Get Strategy Session", "blog_post")
+                window.location.href = "/#contact"
+              }}
+            >
+              Get Your Free Strategy Session
+            </Button>
           </div>
         </div>
       </article>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-cyan-600 to-cyan-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Implement These Strategies?</h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-            Get a custom pharma outreach strategy designed specifically for your life sciences company.
-          </p>
-          <Button
-            size="lg"
-            className="bg-white text-cyan-600 hover:bg-slate-100"
-            onClick={() => window.open("https://calendly.com/aric-weinberg-1/1-hour-meeting", "_blank")}
-          >
-            <Target className="mr-2 h-4 w-4" />
-            Book Your Strategy Session
-          </Button>
-        </div>
-      </section>
     </div>
   )
 }
