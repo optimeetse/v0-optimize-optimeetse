@@ -1,103 +1,138 @@
 "use client"
-import { useState } from "react"
+
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
-import Logo from "@/components/logo"
-import { trackButtonClick } from "@/components/analytics-tracker"
+import { Menu, X, Phone } from "lucide-react"
+import { trackButtonClick } from "./analytics-tracker"
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
-  const handleNavClick = (linkName: string) => {
-    trackButtonClick(linkName, "navbar")
-    setIsOpen(false)
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const handleNavClick = (label: string) => {
+    trackButtonClick(label, "navigation")
+    setIsMenuOpen(false)
   }
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/blog", label: "Blog" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#contact", label: "Contact" },
-  ]
-
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-slate-200/20 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/60">
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2" onClick={() => handleNavClick("logo")}>
-              <Logo />
-              <span className="text-xl font-bold text-white">Opitmeet</span>
-            </Link>
-          </div>
+        <div className="flex justify-between items-center h-16">
+          <Link href="/" className="flex items-center space-x-2" onClick={() => handleNavClick("Logo")}>
+            <div className="w-8 h-8 bg-cyan-500 rounded-lg"></div>
+            <span className={`text-xl font-bold ${isScrolled ? "text-slate-900" : "text-white"}`}>Opitmeet</span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                  onClick={() => handleNavClick(item.label)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-8">
+            <Link
+              href="/#features"
+              className={`${isScrolled ? "text-slate-700 hover:text-cyan-600" : "text-white hover:text-cyan-300"} transition-colors`}
+              onClick={() => handleNavClick("Features")}
+            >
+              Features
+            </Link>
+            <Link
+              href="/#pricing"
+              className={`${isScrolled ? "text-slate-700 hover:text-cyan-600" : "text-white hover:text-cyan-300"} transition-colors`}
+              onClick={() => handleNavClick("Pricing")}
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/blog"
+              className={`${isScrolled ? "text-slate-700 hover:text-cyan-600" : "text-white hover:text-cyan-300"} transition-colors`}
+              onClick={() => handleNavClick("Blog")}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#contact"
+              className={`${isScrolled ? "text-slate-700 hover:text-cyan-600" : "text-white hover:text-cyan-300"} transition-colors`}
+              onClick={() => handleNavClick("Contact")}
+            >
+              Contact
+            </Link>
             <Button
               className="bg-cyan-500 hover:bg-cyan-600 text-white"
               onClick={() => {
-                trackButtonClick("Get Started CTA", "navbar")
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                trackButtonClick("Call Now - Nav", "navigation")
+                window.open("tel:+13104290828")
               }}
             >
-              Get Started
+              <Phone className="mr-2 h-4 w-4" />
+              (310) 429-0828
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open main menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-slate-900 border-slate-700">
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-colors"
-                      onClick={() => handleNavClick(item.label)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                  <Button
-                    className="bg-cyan-500 hover:bg-cyan-600 text-white mt-4"
-                    onClick={() => {
-                      trackButtonClick("Get Started CTA", "mobile_menu")
-                      setIsOpen(false)
-                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                    }}
-                  >
-                    Get Started
-                  </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            className={`md:hidden ${isScrolled ? "text-slate-900" : "text-white"}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-200">
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            <Link
+              href="/#features"
+              className="block text-slate-700 hover:text-cyan-600"
+              onClick={() => handleNavClick("Features - Mobile")}
+            >
+              Features
+            </Link>
+            <Link
+              href="/#pricing"
+              className="block text-slate-700 hover:text-cyan-600"
+              onClick={() => handleNavClick("Pricing - Mobile")}
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/blog"
+              className="block text-slate-700 hover:text-cyan-600"
+              onClick={() => handleNavClick("Blog - Mobile")}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#contact"
+              className="block text-slate-700 hover:text-cyan-600"
+              onClick={() => handleNavClick("Contact - Mobile")}
+            >
+              Contact
+            </Link>
+            <Button
+              className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+              onClick={() => {
+                trackButtonClick("Call Now - Mobile Nav", "navigation")
+                window.open("tel:+13104290828")
+              }}
+            >
+              <Phone className="mr-2 h-4 w-4" />
+              (310) 429-0828
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

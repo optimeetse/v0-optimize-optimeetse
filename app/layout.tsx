@@ -1,75 +1,64 @@
 import type React from "react"
-import "./globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import Navbar from "@/components/navbar"
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
+import Navbar from "@/components/navbar"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Opitmeet Sales Engine - Revolutionizing Sales with AI Solutions",
+  title: "Opitmeet - Life Sciences Sales Engine | Pharma Partnership Development",
   description:
-    "Leverage cutting-edge artificial intelligence to optimize your sales process, increase conversions, and drive revenue growth with data-driven insights.",
-  openGraph: {
-    title: "Opitmeet Sales Engine - Revolutionizing Sales with AI Solutions",
-    description:
-      "Leverage cutting-edge artificial intelligence to optimize your sales process, increase conversions, and drive revenue growth with data-driven insights.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Opitmeet Sales Engine",
-      },
-    ],
-  },
-  generator: "v0.dev",
+    "AI-powered cold email campaigns connecting life sciences companies with pharmaceutical and biotech decision makers. Generate qualified pharma meetings and partnerships.",
+  keywords:
+    "pharmaceutical outreach, biotech partnerships, life sciences sales, pharma lead generation, cold email campaigns",
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: light)" />
-        <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: dark)" />
-
         {/* Google Analytics */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID', {
-              page_title: document.title,
-              page_location: window.location.href,
-            });
-          `}
-        </Script>
+        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID`} />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'GA_MEASUREMENT_ID', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
 
-        {/* Leadsy.ai tracking */}
-        <Script id="leadsy-tracking" strategy="afterInteractive">
-          {`
-            (function() {
-              var script = document.createElement('script');
-              script.src = 'https://app.leadsy.ai/track.js';
-              script.async = true;
-              document.head.appendChild(script);
-            })();
-          `}
-        </Script>
+        {/* Leadsy.ai Website Tracking */}
+        <Script
+          id="leadsy-tracking"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-LEADSY123');
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <Navbar />
-          <main>{children}</main>
-        </ThemeProvider>
+        <Navbar />
+        {children}
       </body>
     </html>
   )

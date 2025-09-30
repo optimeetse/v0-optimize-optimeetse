@@ -1,67 +1,57 @@
 "use client"
 
-import { useEffect } from "react"
-import { usePathname } from "next/navigation"
-
-declare global {
-  interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void
-  }
-}
-
-export function AnalyticsTracker() {
-  const pathname = usePathname()
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", "GA_MEASUREMENT_ID", {
-        page_path: pathname,
-      })
-    }
-  }, [pathname])
-
-  return null
-}
-
-// Analytics utility functions
-export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", eventName, parameters)
-  }
-}
-
-export const trackPageView = (url: string, title?: string) => {
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("config", "GA_MEASUREMENT_ID", {
+// Track page views
+export const trackPageView = (url: string, title: string) => {
+  if (typeof window !== "undefined" && (window as any).gtag) {
+    ;(window as any).gtag("config", "GA_MEASUREMENT_ID", {
       page_path: url,
       page_title: title,
     })
   }
 }
 
-export const trackFormSubmission = (formName: string, formData?: Record<string, any>) => {
-  trackEvent("form_submit", {
-    event_category: "engagement",
-    event_label: formName,
-    form_name: formName,
-    ...formData,
-  })
+// Track custom events
+export const trackEvent = (action: string, category: string, label?: string, value?: number) => {
+  if (typeof window !== "undefined" && (window as any).gtag) {
+    ;(window as any).gtag("event", action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    })
+  }
 }
 
-export const trackButtonClick = (buttonName: string, location?: string) => {
-  trackEvent("button_click", {
-    event_category: "engagement",
-    event_label: buttonName,
-    button_name: buttonName,
-    button_location: location,
-  })
+// Track form submissions
+export const trackFormSubmission = (formName: string, formData?: any) => {
+  if (typeof window !== "undefined" && (window as any).gtag) {
+    ;(window as any).gtag("event", "form_submit", {
+      event_category: "engagement",
+      event_label: formName,
+      form_data: formData,
+      value: 1,
+    })
+  }
 }
 
-export const trackBlogRead = (articleTitle: string, readTime?: number) => {
-  trackEvent("blog_read", {
-    event_category: "content",
-    event_label: articleTitle,
-    article_title: articleTitle,
-    read_time: readTime,
-  })
+// Track button clicks
+export const trackButtonClick = (buttonName: string, location: string) => {
+  if (typeof window !== "undefined" && (window as any).gtag) {
+    ;(window as any).gtag("event", "button_click", {
+      event_category: "engagement",
+      event_label: buttonName,
+      button_location: location,
+    })
+  }
+}
+
+// Track blog post reads
+export const trackBlogRead = (postTitle: string, postSlug: string, readTime: string) => {
+  if (typeof window !== "undefined" && (window as any).gtag) {
+    ;(window as any).gtag("event", "blog_read", {
+      event_category: "content",
+      event_label: postTitle,
+      post_slug: postSlug,
+      read_time: readTime,
+    })
+  }
 }
